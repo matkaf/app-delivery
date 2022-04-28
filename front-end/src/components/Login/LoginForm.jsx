@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Container, Label, MainDiv, P } from './styledLogin';
-
+import { Button, Container, Label, MainDiv, P, ButtonCreateAcount } from './styledLogin';
 import { requestLogin } from '../../services/request';
-
 import Logo from '../../logo.png';
 
 function LoginForm() {
@@ -11,6 +9,10 @@ function LoginForm() {
   const [password, setPassword] = useState('');
   const [failedLogin, setFailedLogin] = useState(false);
   const navigate = useNavigate();
+
+  const register = async () => {
+    navigate('/register');
+  };
 
   const login = async () => {
     try {
@@ -70,6 +72,14 @@ function LoginForm() {
         >
           Entrar
         </Button>
+        <ButtonCreateAcount
+          type="button"
+          className="btnLogin"
+          data-testid="common_login__button-register"
+          onClick={ register }
+        >
+          Ainda não tenho conta
+        </ButtonCreateAcount>
       </Container>
     </MainDiv>
   );

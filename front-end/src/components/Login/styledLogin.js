@@ -6,11 +6,22 @@ const Button = styled.button`
   width:370px;
   height:59px;
   margin-top:20px;
+  cursor: pointer;
 
   &:disabled {
     background-color: grey;
   }
 `;
+
+const ButtonCreateAcount = styled.button`
+  border: 2px solid #046c54;
+  color: #046c54;
+  cursor: pointer;
+  width:370px;
+  height:59px;
+  margin-top:20px;
+`;
+
 const MainDiv = styled.div`
   height: 100vh;
   width: 100%;
@@ -57,4 +68,4 @@ const P = styled.p`
   visibility: ${(props) => (props.loginIsFailed ? 'visible' : 'hidden')};
 `;
 
-export { Button, MainDiv, Container, Label, P };
+export { Button, MainDiv, Container, Label, P, ButtonCreateAcount };
