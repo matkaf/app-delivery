@@ -6,8 +6,10 @@ const loginService = {
   auth: async ({ email, password }) => {
     const passwordMd5 = md5(password);
     const getUser = await loginModel.auth({ email, password: passwordMd5 });
-    const token = generatorJwt(getUser);
-    return { token };
+    if (getUser) {
+      const token = generatorJwt(getUser);
+      return { token };
+    }
   },
 };
 
