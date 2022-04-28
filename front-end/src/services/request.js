@@ -19,5 +19,3 @@ export const createUser = async (endpoint, body) => {
     return false;
   }
 };
-
-export default requestLogin;

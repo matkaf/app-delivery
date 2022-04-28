@@ -6,6 +6,10 @@ const Button = styled.button`
   width:370px;
   height:59px;
   margin-top:20px;
+
+  &:disabled {
+    background-color: grey;
+  }
 `;
 const MainDiv = styled.div`
   height: 100vh;
