@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { Button, Form, Input, Label } from './styledRegister';
 
+import { createUser } from '../../services/request';
+import { useNavigate } from 'react-router-dom';
+
 function validateData(name, email, password) {
   const nameLength = 12;
   const passLength = 6;
+
   if (name.length < nameLength) return true;
 
   if (!email.match(/\S+@\S+\.\S+/)) return true;
@@ -11,6 +15,16 @@ function validateData(name, email, password) {
   if (password.length < passLength) return true;
 
   return false;
+}
+
+async function handleSubmit(name, email, password) {
+  const body = { name, email, password };
+
+  const userCreated = await createUser('/users', body);
+
+  if(!userCreated) return alert('Erro ao criar usuário')
+  
+  return useNavigate('/');
 }
 
 function RegisterForm() {
@@ -53,8 +67,10 @@ function RegisterForm() {
       </Label>
 
       <Button
+        type="button"
         data-testid="common_register__button-register"
         disabled={ validateData(name, email, password) }
+        onClick={ async () => await handleSubmit(name, email, password) }
       >
         CADASTRAR
       </Button>
