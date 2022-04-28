@@ -1,8 +1,10 @@
 const userModel = require('../models/userModel');
+const passwordToHash = require('../functions/helpers');
 
 const userService = {
   create: async (user) => {
-    const newUser = await userModel.create(user);
+    const userObj = passwordToHash(user);
+    const newUser = await userModel.create(userObj);
     return newUser;
   },
   getAll: async () => {
@@ -13,7 +15,8 @@ const userService = {
     const userId = await userModel.getById(id);
     return userId;
   },
-  update: async (id, userObj) => {
+  update: async (id, user) => {
+    const userObj = passwordToHash(user);
     const updateUser = await userModel.update(id, userObj);
     return updateUser;
   },
