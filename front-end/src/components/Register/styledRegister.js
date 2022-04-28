@@ -40,10 +40,9 @@ export const Button = styled.button`
   }
 `;
 
-const P = styled.p`
+export const P = styled.p`
   text-align:center;
   font-size: 15px;
   color:red;
   padding:10px;
-  /* visibility: ${(props) => (props.loginIsFailed ? 'visible' : 'hidden')}; */
 `;

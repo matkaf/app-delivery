@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Form, Input, Label } from './styledRegister';
+import { Button, Form, Input, Label, P } from './styledRegister';
 
 import { createUser } from '../../services/request';
 
@@ -67,8 +67,10 @@ function RegisterForm() {
           onChange={ ({ target: { value } }) => setPassword(value) }
         />
       </Label>
-
-      <p hidden={ error }>Usuário já cadastrado</p>
+      
+      <P hidden={ error }>
+       Usuário já cadastrado
+      </P>
 
       <Button
         type="button"
