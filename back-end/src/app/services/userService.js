@@ -17,6 +17,9 @@ const userService = {
     const updateUser = await userModel.update(id, userObj);
     return updateUser;
   },
+  deleteById: async (id) => {
+    await userModel.deleteById(id);
+  },
 };
 
 module.exports = userService;
