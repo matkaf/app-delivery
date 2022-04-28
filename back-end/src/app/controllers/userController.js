@@ -21,6 +21,11 @@ const userController = {
     const updateUser = await userService.update(id, body);
     return res.status(StatusCodes.CREATED).json(updateUser);
   },
+  deleteById: async (req, res) => {
+    const { id } = req.params;
+    await userService.deleteById(id);
+    return res.status(StatusCodes.NO_CONTENT).end();
+  },
 };
 
 module.exports = userController;
