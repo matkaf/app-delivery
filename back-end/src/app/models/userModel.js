@@ -6,9 +6,7 @@ const userModel = {
     return newUser;
   },
   getAll: async () => {
-    const allUsers = await users.findAll({
-      attributes: ['name', 'email', 'role'],
-    });
+    const allUsers = await users.findAll();
     return allUsers;
   },
   getById: async (id) => {
