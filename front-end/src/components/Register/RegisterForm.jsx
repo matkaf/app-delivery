@@ -67,9 +67,9 @@ function RegisterForm() {
           onChange={ ({ target: { value } }) => setPassword(value) }
         />
       </Label>
-      
+
       <P hidden={ error }>
-       Usuário já cadastrado
+        Usuário já cadastrado
       </P>
 
       <Button
