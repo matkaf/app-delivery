@@ -14,19 +14,19 @@ export const Form = styled.form`
   margin-right: -50%;
   top: 50%;
   left: 50%;
-`
+`;
 
 export const Label = styled.label`
   display:flex;
   flex-direction:column;
-`
+`;
 
 export const Input = styled.input`
   width:370px;
   height:59px;
   margin-top: 10px;
   padding-left:5px;
-`
+`;
 
 export const Button = styled.button`
   background-color:#046c54;
@@ -34,4 +34,8 @@ export const Button = styled.button`
   width:370px;
   height:59px;
   margin-top:20px;
+
+  &:disabled {
+    background-color: grey;
+  }
 `;
