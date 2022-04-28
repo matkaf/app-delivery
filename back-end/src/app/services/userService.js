@@ -13,6 +13,10 @@ const userService = {
     const userId = await userModel.getById(id);
     return userId;
   },
+  update: async (id, userObj) => {
+    const updateUser = await userModel.update(id, userObj);
+    return updateUser;
+  },
 };
 
 module.exports = userService;
