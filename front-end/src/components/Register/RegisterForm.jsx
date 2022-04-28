@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button, Form, Input, Label } from './styledRegister';
 
 import { createUser } from '../../services/request';
-import { useNavigate } from 'react-router-dom';
 
 function validateData(name, email, password) {
   const nameLength = 12;
@@ -17,23 +17,23 @@ function validateData(name, email, password) {
   return false;
 }
 
-async function handleSubmit(name, email, password) {
-  const body = { name, email, password };
-
-  const userCreated = await createUser('/users', body);
-
-  if(!userCreated) return alert('Erro ao criar usuário')
-  
-  return useNavigate('/');
-}
-
 function RegisterForm() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
+  async function handleSubmit() {
+    const body = { name, email, password, role: 'user' };
+
+    const userCreated = await createUser('/users', body);
+
+    if (userCreated) navigate('/');
+
+    navigate('/erro');
+  }
 
   return (
-
     <Form>
       <h2>Cadastro</h2>
       <Label htmlFor="name">
@@ -70,7 +70,9 @@ function RegisterForm() {
         type="button"
         data-testid="common_register__button-register"
         disabled={ validateData(name, email, password) }
-        onClick={ async () => await handleSubmit(name, email, password) }
+        onClick={ async () => {
+          await handleSubmit();
+        } }
       >
         CADASTRAR
       </Button>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:5000',
+  baseURL: 'http://localhost:3001',
 });
 
 export const requestLogin = async (endpoint, body) => {
@@ -15,6 +15,7 @@ export const createUser = async (endpoint, body) => {
     await api.post(endpoint, body);
     return true;
   } catch (error) {
+    console.log(error.message);
     return false;
   }
 };
