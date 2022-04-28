@@ -11,6 +11,12 @@ const userModel = {
     });
     return allUsers;
   },
+  getById: async (id) => {
+    const userId = await users.findByPk(id, {
+      attributes: ['name', 'email', 'role'],
+    });
+    return userId;
+  },
 };
 
 module.exports = userModel;
