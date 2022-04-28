@@ -16,6 +16,11 @@ const userController = {
     const userId = await userService.getById(id);
     return res.status(StatusCodes.OK).json(userId);
   },
+  update: async (req, res) => {
+    const { params: { id }, body } = req;
+    const updateUser = await userService.update(id, body);
+    return res.status(StatusCodes.CREATED).json(updateUser);
+  },
 };
 
 module.exports = userController;
