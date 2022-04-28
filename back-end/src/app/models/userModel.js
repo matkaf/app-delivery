@@ -5,6 +5,10 @@ const userModel = {
     const newUser = await users.create({ name, email, password, role });
     return newUser;
   },
+  getAll: async () => {
+    const allUsers = await users.findAll();
+    return allUsers;
+  },
 };
 
 module.exports = userModel;
