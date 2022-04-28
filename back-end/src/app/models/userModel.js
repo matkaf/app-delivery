@@ -12,9 +12,7 @@ const userModel = {
     return allUsers;
   },
   getById: async (id) => {
-    const userId = await users.findByPk(id, {
-      attributes: ['name', 'email', 'role'],
-    });
+    const userId = await users.findByPk(id);
     return userId;
   },
   update: async (id, { name, email, password, role }) => {
