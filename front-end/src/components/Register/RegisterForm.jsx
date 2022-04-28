@@ -32,7 +32,7 @@ function RegisterForm() {
 
     if (!userCreated) return setError(false);
 
-    navigate('/');
+    navigate('/customer/products');
   }
 
   return (
