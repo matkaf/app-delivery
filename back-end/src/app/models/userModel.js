@@ -24,6 +24,9 @@ const userModel = {
     );
     return { id, name, email, password, role };
   },
+  deleteById: async (id) => {
+    await users.destroy(id);
+  },
 };
 
 module.exports = userModel;
