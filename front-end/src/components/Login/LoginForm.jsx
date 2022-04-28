@@ -19,7 +19,7 @@ function LoginForm() {
       const endpoint = '/login';
 
       const { token } = await requestLogin(endpoint, { email, password });
-      if (token) { navigate('/produtos'); }
+      if (token) { navigate('/customer/products'); }
     } catch (error) {
       setFailedLogin(true);
     }
