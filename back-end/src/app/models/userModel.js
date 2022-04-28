@@ -17,6 +17,13 @@ const userModel = {
     });
     return userId;
   },
+  update: async (id, { name, email, password, role }) => {
+    await users.update(
+      { name, email, password, role },
+      { where: { id } },
+    );
+    return { id, name, email, password, role };
+  },
 };
 
 module.exports = userModel;
