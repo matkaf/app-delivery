@@ -21,6 +21,8 @@ function RegisterForm() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(true);
+
   const navigate = useNavigate();
 
   async function handleSubmit() {
@@ -28,9 +30,9 @@ function RegisterForm() {
 
     const userCreated = await createUser('/users', body);
 
-    if (userCreated) navigate('/');
+    if (!userCreated) return setError(false);
 
-    navigate('/erro');
+    navigate('/');
   }
 
   return (
@@ -65,6 +67,8 @@ function RegisterForm() {
           onChange={ ({ target: { value } }) => setPassword(value) }
         />
       </Label>
+
+      <p hidden={ error }>Usuário já cadastrado</p>
 
       <Button
         type="button"
