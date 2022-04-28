@@ -9,6 +9,10 @@ const userService = {
     const allUsers = await userModel.getAll();
     return allUsers;
   },
+  getById: async (id) => {
+    const userId = await userModel.getById(id);
+    return userId;
+  },
 };
 
 module.exports = userService;
