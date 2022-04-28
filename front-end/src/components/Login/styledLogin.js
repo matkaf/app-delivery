@@ -8,16 +8,12 @@ const Button = styled.button`
   margin-top:20px;
 `;
 const MainDiv = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 100vh;
   width: 100%;
   background-color:rgb(250, 250, 250);
 `;
 
 const Container = styled.form`
-  position: absolute;
   width:400px;
   height:700px;
   border-radius: 5px;
@@ -26,6 +22,7 @@ const Container = styled.form`
   justify-content:center;
   align-items:center;
   margin:0;
+  position: absolute;
   transform: translate(-50%, -50%);
   margin-right: -50%;
   top: 50%;
@@ -50,6 +47,8 @@ const Label = styled.label`
 
 const P = styled.p`
   text-align:center;
+  font-size: 15px;
+  color:red;
   padding:10px;
   visibility: ${(props) => (props.loginIsFailed ? 'visible' : 'hidden')};
 `;
