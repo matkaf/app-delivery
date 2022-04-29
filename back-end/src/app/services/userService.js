@@ -3,9 +3,12 @@ const passwordToHash = require('../functions/helpers');
 
 const userService = {
   create: async (user) => {
-    const userObj = passwordToHash(user);
-    const newUser = await userModel.create(userObj);
-    return newUser;
+    const userByEmail = await userModel.getByEmail(user.email);
+    if (!userByEmail) {
+      const userObj = passwordToHash(user);
+      const newUser = await userModel.create(userObj);
+      return newUser;
+    }
   },
   getAll: async () => {
     const allUsers = await userModel.getAll();
