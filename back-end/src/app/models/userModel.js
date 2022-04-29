@@ -17,6 +17,12 @@ const userModel = {
     });
     return userId;
   },
+  getByEmail: async (email) => {
+    const userByEmail = await users.findOne({
+      where: { email },
+    });
+    return userByEmail;
+  },
   update: async (id, { name, email, password, role }) => {
     await users.update(
       { name, email, password, role },
