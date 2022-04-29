@@ -25,7 +25,7 @@ const userModel = {
     return { id, name, email, password, role };
   },
   deleteById: async (id) => {
-    await users.destroy(id);
+    await users.destroy({ where: { id } });
   },
 };
 
