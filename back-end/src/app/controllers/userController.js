@@ -5,6 +5,9 @@ const userController = {
   create: async (req, res) => {
     const { body } = req;
     const newUser = await userService.create(body);
+    if (!newUser) {
+      return res.status(StatusCodes.CONFLICT).json({ error: 'User already exists' });
+    }
     return res.status(StatusCodes.CREATED).json(newUser);
   },
   getAll: async (_req, res) => {
