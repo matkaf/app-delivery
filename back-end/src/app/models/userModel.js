@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const { users } = require('../../database/models');
 
 const userModel = {
@@ -17,9 +18,9 @@ const userModel = {
     });
     return userId;
   },
-  getByEmail: async (email) => {
+  getByEmailAndName: async (email, name) => {
     const userByEmail = await users.findOne({
-      where: { email },
+      where: { [Op.or]: [{ email }, { name }] },
     });
     return userByEmail;
   },
