@@ -4,7 +4,7 @@ const productService = require('../services/productService');
 const productController = {
   create: async (req, res) => {
     const { body } = req;
-    const newProduct = await productService(body);
+    const newProduct = await productService.create(body);
     return res.status(StatusCodes.CREATED).json(newProduct);
   },
   getAll: async (_req, res) => {
