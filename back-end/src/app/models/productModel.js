@@ -5,6 +5,10 @@ const productModel = {
     const newProduct = await products.create({ name, price, urlImage });
     return newProduct;
   },
+  getAll: async () => {
+    const allProducts = await products.findAll();
+    return allProducts;
+  },
 };
 
 module.exports = productModel;
