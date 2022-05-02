@@ -13,7 +13,7 @@ const productModel = {
     const productId = await products.findByPk(id);
     return productId;
   },
-  update: async ({ id, name, price, urlImage }) => {
+  update: async (id, { name, price, urlImage }) => {
     await products.update(
       { name, price, urlImage },
       { where: { id } },
