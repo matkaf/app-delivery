@@ -30,6 +30,8 @@ function RegisterForm() {
 
     const userCreated = await createUser('/users', body);
 
+    console.log('Resposta API:', userCreated);
+
     if (!userCreated) return setError(false);
 
     navigate('/customer/products');
@@ -68,7 +70,10 @@ function RegisterForm() {
         />
       </Label>
 
-      <P hidden={ error }>
+      <P
+        hidden={ error }
+        data-testid="common_register__element-invalid_register"
+      >
         Usuário já cadastrado
       </P>
 
