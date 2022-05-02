@@ -1,0 +1,22 @@
+import PropTypes from 'prop-types';
+import React from 'react';
+import Counter from '../Counter/Counter';
+
+export default function DrinkCard({ price, imageUrl, drinkName }) {
+  return (
+    <div>
+      <p>{price}</p>
+      <img src={ imageUrl } alt={ drinkName } />
+      <div>
+        <p>{ drinkName }</p>
+        <Counter />
+      </div>
+    </div>
+  );
+}
+
+DrinkCard.propTypes = {
+  drinkName: PropTypes.string,
+  imageUrl: PropTypes.string,
+  price: PropTypes.number,
+}.isRequired;

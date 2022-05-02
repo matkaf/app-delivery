@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "drinkName": "skol latão 473ML",
+    "price": 5.00,
+    "imageUrl": "imageUrl"
+  },
+  {
+    "id": 2,
+    "drinkName": "tequila Jose Cuervo 750ML",
+    "price": 100.00,
+    "imageUrl": "imageUrl"
+  },
+  {
+    "id": 3,
+    "drinkName": "whisky Red Label 750ML",
+    "price": 90.00,
+    "imageUrl": "imageUrl"
+  },
+  {
+    "id": 4,
+    "drinkName": "cerveja Lokal 350ML",
+    "price": 2.00,
+    "imageUrl": "imageUrl"
+  },
+  {
+    "id": 5,
+    "drinkName": "cerveja Original 600ML",
+    "price": 6.00,
+    "imageUrl": "imageUrl"
+  },
+  {
+    "id": 6,
+    "drinkName": "Brahma puro malte 600ML",
+    "price": 7.00,
+    "imageUrl": "imageUrl"
+  }
+]
