@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Form, Input, Label, P } from './styledRegister';
+import { Button, Form, Input, Label, P, Image } from './styledRegister';
+import logo from '../../logo.png';
 
 import { createUser } from '../../services/request';
 
@@ -39,6 +40,8 @@ function RegisterForm() {
 
   return (
     <Form>
+      <Image src={ logo } alt="logo" />
+      <br />
       <h2>Cadastro</h2>
       <Label htmlFor="name">
         Nome:
