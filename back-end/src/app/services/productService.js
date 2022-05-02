@@ -13,6 +13,10 @@ const productService = {
     const productId = await productModel.getById(id);
     return productId;
   },
+  update: async (id, productObj) => {
+    const updateProduct = await productModel.update(id, productObj);
+    return updateProduct;
+  },
 };
 
 module.exports = productService;
