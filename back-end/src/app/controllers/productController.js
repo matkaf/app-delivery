@@ -21,6 +21,11 @@ const productController = {
     const updateProduct = await productService.update(id, body);
     return res.status(StatusCodes.CREATED).json(updateProduct);
   },
+  deleteById: async (req, res) => {
+    const { id } = req.params;
+    await productService.deleteById(id);
+    return res.status(StatusCodes.NO_CONTENT).end();
+  },
 };
 
 module.exports = productController;
