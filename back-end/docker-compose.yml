@@ -9,14 +9,14 @@
     environment:
       API_PORT: 3001
       MYSQL_ROOT_USER: root
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: password
       MYSQL_HOST: localhost
       MYSQL_PORT: 3306
       MYSQL_DB_NAME: delivery-app
-      #EVAL_ALWAYS_RESTORE_DEV_DB: 'true'
+      EVAL_ALWAYS_RESTORE_DEV_DB: 'true'
 
     ports:
-      - 3333:3306
+     - 3333:3306
 
     volumes:
       - ./:/app
