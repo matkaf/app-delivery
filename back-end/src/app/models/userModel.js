@@ -1,8 +1,9 @@
+const { Op } = require('sequelize');
 const { users } = require('../../database/models');
 
 const userModel = {
-  create: async ({ name, email, password, role }) => {
-    const newUser = await users.create({ name, email, password, role });
+  create: async ({ name, email, password }) => {
+    const newUser = await users.create({ name, email, password });
     return newUser;
   },
   getAll: async () => {
@@ -17,6 +18,12 @@ const userModel = {
     });
     return userId;
   },
+  getByEmailAndName: async (email, name) => {
+    const userByEmail = await users.findOne({
+      where: { [Op.or]: [{ email }, { name }] },
+    });
+    return userByEmail;
+  },
   update: async (id, { name, email, password, role }) => {
     await users.update(
       { name, email, password, role },
@@ -25,7 +32,7 @@ const userModel = {
     return { id, name, email, password, role };
   },
   deleteById: async (id) => {
-    await users.destroy(id);
+    await users.destroy({ where: { id } });
   },
 };
 
