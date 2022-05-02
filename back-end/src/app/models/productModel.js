@@ -20,6 +20,9 @@ const productModel = {
     );
     return { id, name, price, urlImage };
   },
+  deleteById: async (id) => {
+    await products.destroy({ where: { id } });
+  },
 };
 
 module.exports = productModel;
