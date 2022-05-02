@@ -19,3 +19,9 @@ export const createUser = async (endpoint, body) => {
     return false;
   }
 };
+
+const mocksApi = axios.create({
+  baseURL: '../mocks',
+});
+
+export const getDrinks = async () => mocksApi.get();
