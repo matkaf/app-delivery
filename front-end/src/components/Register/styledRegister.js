@@ -46,3 +46,8 @@ export const P = styled.p`
   color:red;
   padding:10px;
 `;
+
+export const Image = styled.img`
+  width:200px;
+  border-radius:50%;
+`;
