@@ -14,6 +14,8 @@ const schemaByPath = (path) => {
   switch (path) {
     case '/login':
       return schemas.login;
+    case '/users':
+      return schemas.user;
     default:
       return Joi.object().empty();
   }

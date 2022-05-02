@@ -5,13 +5,13 @@ const login = Joi.object({
   password: Joi.string().required().min(6),
 });
 
-// const user = Joi.object({ // Work in progress <<
-//   name: ,
-//   email: ,
-//   password: ,
-//   role: ,
-// });
+const user = Joi.object({
+  name: Joi.string().required().min(12),
+  email: Joi.string().email().required(),
+  password: Joi.string().required().min(6),
+});
 
 module.exports = {
   login,
+  user,
 };
