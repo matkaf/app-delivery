@@ -7,6 +7,10 @@ const productController = {
     const newProduct = await productService(body);
     return res.status(StatusCodes.CREATED).json(newProduct);
   },
+  getAll: async (_req, res) => {
+    const allProducts = await productService.getAll();
+    return res.status(StatusCodes.OK).json(allProducts);
+  },
 };
 
 module.exports = productController;
