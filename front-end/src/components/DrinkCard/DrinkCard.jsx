@@ -5,11 +5,6 @@ import Counter from '../Counter/Counter';
 export default function DrinkCard({ id, price, imageUrl, drinkName }) {
   const [amount, setAmount] = useState(0);
 
-  function handleClick({ target }) {
-    if (target.innerHTML === '+') setAmount(+amount + 1);
-    if (target.innerHTML === '-') setAmount(+amount > 0 ? +amount - 1 : 0);
-  }
-
   function addToLocalStorage(value) {
     const products = { id, drinkName, price, amount: value };
     const exist = localStorage.getItem('carrinho');
@@ -23,9 +18,23 @@ export default function DrinkCard({ id, price, imageUrl, drinkName }) {
     localStorage.setItem('carrinho', JSON.stringify([products]));
   }
 
+  function handleClick(event) {
+    if (event.target.innerHTML === '+') {
+      setAmount(+amount + 1);
+      addToLocalStorage(+amount + 1);
+    }
+    if (event.target.innerHTML === '-') {
+      setAmount(+amount > 0 ? +amount - 1 : 0);
+      addToLocalStorage(+amount - 1);
+    }
+    console.log(event.target.parentNode, 'blabla');
+  }
+
   function handleChange({ target }) {
     setAmount(target.value);
-    addToLocalStorage(target.value);
+    if (target.value > 0) {
+      addToLocalStorage(target.value);
+    }
   }
 
   return (
