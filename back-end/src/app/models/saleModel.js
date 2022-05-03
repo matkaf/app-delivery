@@ -14,6 +14,10 @@ const saleModel = {
     const allSales = await sales.findAll();
     return allSales;
   },
+  getById: async (id) => {
+    const saleId = await sales.findByPk(id);
+    return saleId;
+  },
 };
 
 module.exports = saleModel;
