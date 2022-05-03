@@ -4,7 +4,6 @@ const cors = require('cors');
 const errorMiddleware = require('../app/middlewares/errorMiddleware');
 const userRouter = require('./routes/userRouter');
 const loginRouter = require('./routes/loginRouter');
-const errorMiddleware = require('../app/middlewares/errorMiddleware');
 // const validateInputs = require('../app/middlewares/validateInputs');
 const productRouter = require('./routes/productRouter');
 
