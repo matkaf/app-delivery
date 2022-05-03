@@ -17,8 +17,9 @@ function LoginForm() {
   const login = async () => {
     try {
       const user = await requestLogin('/login', { email, password });
+      console.log(user);
       if (user.token) {
-        localStorage.setItem('user', user);
+        localStorage.setItem('user', JSON.stringify(user));
         navigate(`/${user.role}/products`); // TODO: rota /admin
       }
     } catch (error) {
