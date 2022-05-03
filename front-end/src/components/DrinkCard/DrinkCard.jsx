@@ -10,6 +10,24 @@ export default function DrinkCard({ id, price, imageUrl, drinkName }) {
     if (target.innerHTML === '-') setAmount(+amount > 0 ? +amount - 1 : 0);
   }
 
+  function addToLocalStorage(value) {
+    console.log('oi');
+    const products = { price, drinkName, amount: value };
+    const exist = localStorage.getItem('carrinho');
+    if (exist) {
+      const cartItems = JSON.parse(exist);
+      console.log(cartItems, 'aqui');
+      localStorage.setItem('carrinho', JSON.stringify([...cartItems, products]));
+      return;
+    }
+    localStorage.setItem('carrinho', JSON.stringify([products]));
+  }
+
+  function handleChange({ target }) {
+    setAmount(target.value);
+    addToLocalStorage(target.value);
+  }
+
   return (
     <div data-testid={ `customer_products__element-card-price-${id}` }>
       <p>{price}</p>
@@ -19,7 +37,7 @@ export default function DrinkCard({ id, price, imageUrl, drinkName }) {
         <Counter
           value={ amount }
           onClick={ (event) => handleClick(event) }
-          onChange={ ({ target }) => setAmount(target.value) }
+          onChange={ (event) => handleChange(event) }
         />
       </div>
     </div>

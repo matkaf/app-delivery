@@ -11,7 +11,7 @@ export default function DrinkCardList() {
         <DrinkCard
           key={ id }
           id={ id }
-          prince={ price }
+          price={ price }
           imageUrl={ imageUrl }
           drinkName={ drinkName }
         />
