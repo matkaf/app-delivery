@@ -5,6 +5,10 @@ const saleService = {
     const newSale = await saleModel.create(saleObj);
     return newSale;
   },
+  getAll: async () => {
+    const allSales = await saleModel.getAll();
+    return allSales;
+  },
 };
 
 module.exports = saleService;
