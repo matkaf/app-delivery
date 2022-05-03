@@ -1,5 +1,5 @@
 const md5 = require('md5');
-const generatorJwt = require('../auth/generatorJwt');
+const { generatorJwt } = require('../auth/generatorJwt');
 const loginModel = require('../models/loginModel');
 
 const loginService = {
