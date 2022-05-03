@@ -2,10 +2,10 @@ const { users } = require('../../database/models');
 
 const loginModel = {
   auth: async ({ email, password }) => {
-    const getUser = await users.findOne({
+    const user = await users.findOne({
       where: { email, password },
     });
-    return getUser;
+    return { name: user.name, email: user.email, role: user.role };
   },
 };
 
