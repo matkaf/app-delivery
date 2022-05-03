@@ -9,6 +9,10 @@ const saleService = {
     const allSales = await saleModel.getAll();
     return allSales;
   },
+  getById: async (id) => {
+    const saleId = await saleModel.getById(id);
+    return saleId;
+  },
 };
 
 module.exports = saleService;
