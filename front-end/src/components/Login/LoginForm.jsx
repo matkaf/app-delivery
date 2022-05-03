@@ -28,7 +28,7 @@ function LoginForm() {
     default:
       navigate('/');
     }
-  }
+  };
 
   const login = async () => {
     try {
