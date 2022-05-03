@@ -21,6 +21,12 @@ module.exports = {
         password:'1c37466c159755ce1fa181bd247cb925',
         role:'customer',
       },
+      {
+        name: 'Usuario Teste',
+        email: 'teste@teste.com',
+        password: 'aa1bf4646de67fd9086cf6c79007026c', //teste123
+        role: 'customer',
+      }
     ], {}),
 
   down: async (queryInterface) => queryInterface.bulkDelete('users', null, {}),

@@ -16,10 +16,11 @@ function LoginForm() {
 
   const login = async () => {
     try {
-      const endpoint = '/login';
-
-      const { token } = await requestLogin(endpoint, { email, password });
-      if (token) { navigate('/customer/products'); }
+      const user = await requestLogin('/login', { email, password });
+      if (user.token) {
+        localStorage.setItem('user', user);
+        navigate(`/${user.role}/products`); // TODO: rota /admin
+      }
     } catch (error) {
       setFailedLogin(true);
     }
