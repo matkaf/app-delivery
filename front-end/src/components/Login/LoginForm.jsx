@@ -17,9 +17,9 @@ function LoginForm() {
   const login = async () => {
     try {
       const user = await requestLogin('/login', { email, password });
-      if (user) {
+      if (user.token) {
         localStorage.setItem('user', user);
-        navigate(`/${user.role}/products`); //TODO: rota /admin
+        navigate(`/${user.role}/products`); // TODO: rota /admin
       }
     } catch (error) {
       setFailedLogin(true);
