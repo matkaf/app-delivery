@@ -9,9 +9,11 @@ const DrinksContext = createContext({});
 
 function DrinksProvider({ children }) {
   const [data, setData] = useState([]);
+
   const getDrinksfromApi = async () => {
     const drinks = await getDrinks();
-    setData(drinks);
+    console.log(drinks);
+    setData(drinks.data);
   };
 
   useEffect(() => {
@@ -43,4 +45,4 @@ const useDrinks = () => {
   return context;
 };
 
-export { DrinksProvider, useDrinks };
+export { useDrinks, DrinksProvider };

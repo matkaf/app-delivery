@@ -1,15 +1,19 @@
 import React from 'react';
+import { useDrinks } from '../../hooks/useDrinks';
 import DrinkCard from '../DrinkCard/DrinkCard';
 
 export default function DrinkCardList() {
+  const { data } = useDrinks();
+
   return (
     <div>
-      {drinks.map((drink) => (
+      {data.map(({ id, drinkName, price, imageUrl }) => (
         <DrinkCard
-          key={ drink.id }
-          id={ drink.id }
-          prince={ drink.price }
-          drinkName={ drink.name }
+          key={ id }
+          id={ id }
+          prince={ price }
+          imageUrl={ imageUrl }
+          drinkName={ drinkName }
         />
       ))}
     </div>
