@@ -10,6 +10,10 @@ const saleModel = {
     });
     return newSale;
   },
+  getAll: async () => {
+    const allSales = await sales.findAll();
+    return allSales;
+  },
 };
 
 module.exports = saleModel;
