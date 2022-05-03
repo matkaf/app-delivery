@@ -6,7 +6,7 @@ const login = Joi.object({
 });
 
 const user = Joi.object({
-  name: Joi.string().required().min(12),
+  name: Joi.string().required(),
   email: Joi.string().email().required(),
   password: Joi.string().required().min(6),
 });
