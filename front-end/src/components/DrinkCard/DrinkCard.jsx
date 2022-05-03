@@ -11,13 +11,13 @@ export default function DrinkCard({ id, price, imageUrl, drinkName }) {
   }
 
   function addToLocalStorage(value) {
-    console.log('oi');
-    const products = { price, drinkName, amount: value };
+    const products = { id, drinkName, price, amount: value };
     const exist = localStorage.getItem('carrinho');
+    console.log(exist, 'aqui123');
     if (exist) {
-      const cartItems = JSON.parse(exist);
+      const cartItems = JSON.parse(exist).filter((el) => el.id !== id);
       console.log(cartItems, 'aqui');
-      localStorage.setItem('carrinho', JSON.stringify([...cartItems, products]));
+      localStorage.setItem('carrinho', JSON.stringify([...cartItems, { ...products }]));
       return;
     }
     localStorage.setItem('carrinho', JSON.stringify([products]));
