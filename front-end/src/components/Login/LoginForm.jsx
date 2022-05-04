@@ -14,12 +14,29 @@ function LoginForm() {
     navigate('/register');
   };
 
+  const userNavigation = (role) => {
+    switch (role) {
+    case 'customer':
+      navigate('/customer/products');
+      break;
+    case 'seller':
+      navigate('/seller/orders');
+      break;
+    case 'admin':
+      navigate('/admin/manage');
+      break;
+    default:
+      navigate('/');
+    }
+  };
+
   const login = async () => {
     try {
       const user = await requestLogin('/login', { email, password });
+      console.log(user);
       if (user.token) {
-        localStorage.setItem('user', user);
-        navigate(`/${user.role}/products`); // TODO: rota /admin
+        localStorage.setItem('user', JSON.stringify(user));
+        userNavigation(user.role);
       }
     } catch (error) {
       setFailedLogin(true);
