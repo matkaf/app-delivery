@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
     // Concatena o fileId com o fileExtension para gerar o novo nome do arquivo
     const newNameFile = `${fileId}.${fileExtension}`;
 
-    req.body.urlImage = `/backend/public/${newNameFile}`;
+    req.body.urlImage = `/back-end/public/${newNameFile}`;
     cb(null, newNameFile);
   },
 });
