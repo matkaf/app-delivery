@@ -17,6 +17,9 @@ const saleService = {
     const updateSale = await saleModel.update(id, saleObj);
     return updateSale;
   },
+  deleteById: async (id) => {
+    await saleModel.deleteById(id);
+  },
 };
 
 module.exports = saleService;
