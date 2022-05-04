@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const OrderCard = styled.div`
   display: flex;
@@ -8,7 +8,7 @@ export const OrderCard = styled.div`
   height: 12vh;
   width: 90vw;
   border-radius: 12px;
-  background-color: #E5E5E5;
+  background-color: grey;
 `;
 
 export const OrderCategory = styled.div`
@@ -16,5 +16,26 @@ export const OrderCategory = styled.div`
   flex-direction: column;
   height: 80%;
   justify-content: space-around;
-  width: 180px;
+  align-items: center;
+  width: 200px;
+  font-size: 14px;
+
+  ${(props) => {
+    if (props.address) {
+      return css`
+        p {
+          font-size: 12px;
+          overflow-y: auto;
+        }`;
+    }
+
+    if (props.status) { // TODO: Status diferentes
+      return css`
+        background: green;
+        border-radius: 10px;
+      `;
+    }
+  }
+
+}
 `;

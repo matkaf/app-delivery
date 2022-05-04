@@ -7,7 +7,6 @@ const OrderContainer = styled.section`
   padding: 12px;
   width: 100vw;
   height: 100vh;
-  background-color: #020202;
   `;
 
 export default OrderContainer;

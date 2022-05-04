@@ -1,35 +1,47 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { OrderCard, OrderCategory } from './styledSellerOrderCard';
 
-function SellerOrderCard() {
+function SellerOrderCard({ order }) {
+  const { id, totalPrice, deliveryAddress, saleDate, status } = order;
   return (
     <OrderCard>
       <OrderCategory>
         <h3>Pedido:</h3>
-        <p>0001x</p>
+        <p>{ id }</p>
       </OrderCategory>
 
-      <OrderCategory>
+      <OrderCategory status>
         <h3>Status:</h3>
-        <p>PENDENTE</p>
+        <p>{ status }</p>
       </OrderCategory>
 
       <OrderCategory>
         <h3>Data do pedido:</h3>
-        <p>01/01/2020</p>
+        <p>{ saleDate }</p>
       </OrderCategory>
 
       <OrderCategory>
         <h3>Valor:</h3>
-        <p>R$: 47,87</p>
+        <p>{ totalPrice.toFixed(2) }</p>
       </OrderCategory>
 
-      <OrderCategory>
+      <OrderCategory address>
         <h3>Endereço:</h3>
-        <p>Jeremias de Mattos, 12</p>
+        <p>{ deliveryAddress }</p>
       </OrderCategory>
     </OrderCard>
   );
 }
+
+SellerOrderCard.propTypes = {
+  order: PropTypes.shape({
+    deliveryAddress: PropTypes.string,
+    id: PropTypes.number,
+    saleDate: PropTypes.string,
+    status: PropTypes.string,
+    totalPrice: PropTypes.number,
+  }).isRequired,
+};
 
 export default SellerOrderCard;
