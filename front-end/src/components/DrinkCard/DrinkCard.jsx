@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import Counter from '../Counter/Counter';
-import Img from './styledDrinkCard';
+import { Img, PriceContainer, CardContainer } from './styledDrinkCard';
 
 export default function DrinkCard({ id, price, imageUrl, drinkName }) {
   const [amount, setAmount] = useState(0);
@@ -38,18 +38,18 @@ export default function DrinkCard({ id, price, imageUrl, drinkName }) {
   }
 
   return (
-    <div data-testid={ `customer_products__element-card-price-${id}` }>
-      <p>{price}</p>
+    <CardContainer data-testid={ `customer_products__element-card-price-${id}` }>
+      <PriceContainer>{price}</PriceContainer>
       <Img src={ imageUrl } alt={ drinkName } />
       <div>
-        <p>{ drinkName }</p>
+        <h4>{ drinkName }</h4>
         <Counter
           value={ amount }
           onClick={ (event) => handleClick(event) }
           onChange={ (event) => handleChange(event) }
         />
       </div>
-    </div>
+    </CardContainer>
   );
 }
 

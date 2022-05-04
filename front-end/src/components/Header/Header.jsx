@@ -1,18 +1,18 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Div, Nav } from './styledHeader';
+import { DivL, DivR, Nav } from './styledHeader';
 
 export default function Header({ clientName }) {
   return (
     <header>
       <Nav>
         <div>
-          <Div>PRODUTOS</Div>
-          <Div>MEUS PEDIDOS</Div>
+          <DivL>PRODUTOS</DivL>
+          <DivL>MEUS PEDIDOS</DivL>
         </div>
         <div>
-          <Div>{clientName}</Div>
-          <Div>Sair</Div>
+          <DivR>{clientName}</DivR>
+          <DivR>Sair</DivR>
         </div>
       </Nav>
     </header>

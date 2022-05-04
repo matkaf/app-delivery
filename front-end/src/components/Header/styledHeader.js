@@ -11,17 +11,29 @@ const Nav = styled.header`
     display: flex;
     align-items: center;
     font-size: 1.5rem;
+    color: white;
   }
 `;
 
-const Div = styled.div`
+const DivL = styled.div`
   height: 6.7rem;
   width: 15rem;
   display: flex;
   justify-content: center;
-  &:active{
-    background: #2FC18C;
+`;
+
+const DivR = styled.div`
+  height: 6.7rem;
+  width: 15rem;
+  display: flex;
+  justify-content: center;
+
+  :nth-child(1) {
+    background: #421981;
+  }
+  :nth-child(2) {
+    background: #056CF9;
   }
 `;
 
-export { Nav, Div };
+export { Nav, DivL, DivR };
