@@ -20,6 +20,9 @@ const saleModel = {
     );
     return { id, ...saleObj };
   },
+  deleteById: async (id) => {
+    await sales.destroy({ where: { id } });
+  },
 };
 
 module.exports = saleModel;
