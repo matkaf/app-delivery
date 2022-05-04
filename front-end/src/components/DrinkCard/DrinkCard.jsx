@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import Counter from '../Counter/Counter';
+import Img from './styledDrinkCard';
 
 export default function DrinkCard({ id, price, imageUrl, drinkName }) {
   const [amount, setAmount] = useState(0);
@@ -39,7 +40,7 @@ export default function DrinkCard({ id, price, imageUrl, drinkName }) {
   return (
     <div data-testid={ `customer_products__element-card-price-${id}` }>
       <p>{price}</p>
-      <img src={ imageUrl } alt={ drinkName } />
+      <Img src={ imageUrl } alt={ drinkName } />
       <div>
         <p>{ drinkName }</p>
         <Counter

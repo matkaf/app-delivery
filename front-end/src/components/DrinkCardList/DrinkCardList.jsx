@@ -1,21 +1,22 @@
 import React from 'react';
 import { useDrinks } from '../../hooks/useDrinks';
 import DrinkCard from '../DrinkCard/DrinkCard';
+import CardsContainer from './styledDrinkCardList';
 
 export default function DrinkCardList() {
   const { data } = useDrinks();
 
   return (
-    <div>
-      {data.map(({ id, drinkName, price, imageUrl }) => (
+    <CardsContainer>
+      {data.map(({ id, name, price, urlImage }) => (
         <DrinkCard
           key={ id }
           id={ id }
           price={ price }
-          imageUrl={ imageUrl }
-          drinkName={ drinkName }
+          imageUrl={ `http://localhost:3001${urlImage}` }
+          drinkName={ name }
         />
       ))}
-    </div>
+    </CardsContainer>
   );
 }

@@ -11,7 +11,7 @@ function DrinksProvider({ children }) {
   const [data, setData] = useState([]);
 
   const getDrinksfromApi = async () => {
-    const drinks = await getDrinks();
+    const drinks = await getDrinks('/products');
     console.log(drinks);
     setData(drinks.data);
   };
