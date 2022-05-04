@@ -14,11 +14,8 @@ const saleModel = {
     return saleId;
   },
   update: async (id, saleObj) => {
-    const {
-      userId, sallerId, totalPrice, deliveryAnddress, deliveryNumber, saleDate, status,
-    } = saleObj;
     await sales.update(
-      { userId, sallerId, totalPrice, deliveryAnddress, deliveryNumber, saleDate, status },
+      { ...saleObj },
       { where: { id } },
     );
     return { id, ...saleObj };
