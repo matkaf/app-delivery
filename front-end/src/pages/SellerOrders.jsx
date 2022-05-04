@@ -1,11 +1,13 @@
 import React from 'react';
+import SellerOrdersContainer from '../components/Seller/SellerOrdersContainer';
 
 function SellerOrders() {
   return (
-    <div>
-      <header>Header</header>
-    </div>
+    <SellerOrdersContainer />
   );
 }
 
 export default SellerOrders;
+
+// fulana@deliveryapp.com
+// fulana@123
