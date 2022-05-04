@@ -27,7 +27,6 @@ export default function DrinkCard({ id, price, imageUrl, drinkName }) {
       setAmount(+amount > 0 ? +amount - 1 : 0);
       addToLocalStorage(+amount - 1);
     }
-    console.log(event.target.parentNode, 'blabla');
   }
 
   function handleChange({ target }) {
