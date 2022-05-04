@@ -13,6 +13,10 @@ const saleService = {
     const saleId = await saleModel.getById(id);
     return saleId;
   },
+  update: async (id, saleObj) => {
+    const updateSale = await saleModel.update(id, saleObj);
+    return updateSale;
+  },
 };
 
 module.exports = saleService;
