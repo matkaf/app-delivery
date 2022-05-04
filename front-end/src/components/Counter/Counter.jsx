@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Button, Input, Div } from './styledCounter';
 
 export default function Counter({ value, onClick, onChange }) {
   return (
-    <div>
-      <button type="button" onClick={ onClick }>-</button>
-      <input type="text" inputMode="numeric" value={ value } onChange={ onChange } />
-      <button type="button" onClick={ onClick }>+</button>
-    </div>
+    <Div>
+      <Button type="button" onClick={ onClick }>-</Button>
+      <Input type="text" inputMode="numeric" value={ value } onChange={ onChange } />
+      <Button type="button" onClick={ onClick }>+</Button>
+    </Div>
   );
 }
 
