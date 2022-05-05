@@ -1,6 +1,7 @@
 import React from 'react';
 import OrderContainer from './styledSellerOrdersContainer';
 import SellerOrderCard from './SellerOrderCard';
+import Button from '@mui/material/Button';
 
 function SellerOrdersContainer() {
   const orders = [
@@ -35,9 +36,12 @@ function SellerOrdersContainer() {
   ];
 
   return (
-    <OrderContainer>
-      { orders.map((order) => <SellerOrderCard key={ order.id } order={ order } />) }
-    </OrderContainer>
+    <>
+      <Button variant="contained"> Olá Mundo!'</Button>
+      <OrderContainer>
+        { orders.map((order) => <SellerOrderCard key={ order.id } order={ order } />) }
+      </OrderContainer>
+    </>
   );
 }
 
