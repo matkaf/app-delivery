@@ -1,9 +1,11 @@
 import React from 'react';
-import SellerOrdersContainer from '../components/Seller/SellerOrdersContainer';
+// import SellerOrdersContainer from '../components/Seller/SellerOrdersContainer';
+import Row from '../components/Seller/SellerOrderTableMUI';
 
 function SellerOrders() {
   return (
-    <SellerOrdersContainer />
+    // <SellerOrdersContainer />
+    <Row />
   );
 }
 
