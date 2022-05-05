@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import Counter from '../Counter/Counter';
-import { Img, PriceContainer, CardContainer } from './styledDrinkCard';
+import { Img, PriceContainer, CardContainer, FooterCard } from './styledDrinkCard';
 
 export default function DrinkCard({ id, price, imageUrl, drinkName }) {
   const [amount, setAmount] = useState(0);
@@ -9,10 +9,8 @@ export default function DrinkCard({ id, price, imageUrl, drinkName }) {
   function addToLocalStorage(value) {
     const products = { id, drinkName, price, amount: value };
     const exist = localStorage.getItem('carrinho');
-    console.log(exist, 'aqui123');
     if (exist) {
       const cartItems = JSON.parse(exist).filter((el) => el.id !== id);
-      console.log(cartItems, 'aqui');
       localStorage.setItem('carrinho', JSON.stringify([...cartItems, { ...products }]));
       return;
     }
@@ -41,14 +39,14 @@ export default function DrinkCard({ id, price, imageUrl, drinkName }) {
     <CardContainer data-testid={ `customer_products__element-card-price-${id}` }>
       <PriceContainer>{price}</PriceContainer>
       <Img src={ imageUrl } alt={ drinkName } />
-      <div>
+      <FooterCard>
         <h4>{ drinkName }</h4>
         <Counter
           value={ amount }
           onClick={ (event) => handleClick(event) }
           onChange={ (event) => handleChange(event) }
         />
-      </div>
+      </FooterCard>
     </CardContainer>
   );
 }

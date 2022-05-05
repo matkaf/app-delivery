@@ -5,11 +5,15 @@ const CardContainer = styled.div`
   text-align: center;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  border: solid grey 1px;
+  width: 22rem;
+  height: 29rem;
 `;
 
 const Img = styled.img`
-  width: 15rem;
-  height: 15rem;
+  width: 20rem;
+  height: 20rem;
 `;
 
 const PriceContainer = styled.div`
@@ -17,7 +21,18 @@ const PriceContainer = styled.div`
   border-radius: 5px;
   font-size: 2rem;
   position: absolute;
+  font-weight: bold;
   opacity: 0.8;
 `;
 
-export { Img, PriceContainer, CardContainer };
+const FooterCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: #F2FFFC;
+  width: 21.9rem;
+  height: 6rem;
+  box-shadow: 1px 2px rgb(192,192,192)
+`;
+
+export { Img, PriceContainer, CardContainer, FooterCard };
