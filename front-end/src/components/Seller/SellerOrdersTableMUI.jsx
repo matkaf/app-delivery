@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import OrderContainer from './styledSellerOrdersContainer';
-import SellerOrderCard from './SellerOrderCard';
+import * as mui from '@mui/material';
+
+import SellerOrderRowMUI from './SellerOrderRowMUI';
+
 import { getSales } from '../../services/request';
 
-import Button from '@mui/material/Button';
+//
 
-
-function SellerOrdersContainer() {
+function SellerOrdersTableMUI() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -33,13 +34,10 @@ function SellerOrdersContainer() {
   }
 
   return (
-    <>
-      <Button variant="contained"> Olá Mundo!'</Button>
-      <OrderContainer>
-        { orders.map((order) => <SellerOrderCard key={ order.id } order={ order } />) }
-      </OrderContainer>
-    </>
+    <mui.Container>
+      { orders.map((order) => <SellerOrderRowMUI key={ order.id } order={ order } />) }
+    </mui.Container>
   );
 }
 
-export default SellerOrdersContainer;
+export default SellerOrdersTableMUI;
