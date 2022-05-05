@@ -14,7 +14,7 @@ export const OrderCard = styled.div`
 export const OrderCategory = styled.div`
   display: flex;
   flex-direction: column;
-  height: 80%;
+  height: 60%;
   justify-content: space-around;
   align-items: center;
   width: 200px;
@@ -31,8 +31,11 @@ export const OrderCategory = styled.div`
 
     if (props.status) { // TODO: Status diferentes
       return css`
-        background: green;
-        border-radius: 10px;
+        p {
+          background: green;
+          border-radius: 10px;
+          padding: 5px 10px;
+        }
       `;
     }
   }

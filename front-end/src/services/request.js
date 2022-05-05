@@ -19,3 +19,13 @@ export const createUser = async (endpoint, body) => {
     return false;
   }
 };
+
+export const getSales = async (endpoint) => {
+  try {
+    const sales = await api.get(endpoint);
+
+    return { status: true, sales };
+  } catch (error) {
+    return { status: false, error: error.message };
+  }
+};

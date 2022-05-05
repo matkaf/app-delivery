@@ -1,39 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import OrderContainer from './styledSellerOrdersContainer';
 import SellerOrderCard from './SellerOrderCard';
+import { getSales } from '../../services/request';
+
 import Button from '@mui/material/Button';
 
+
 function SellerOrdersContainer() {
-  const orders = [
-    {
-      id: 1,
-      totalPrice: 15.45,
-      deliveryAddress: 'Rua Maria, 100 - Centro, São Paulo - SP',
-      saleDate: '01/05/2022',
-      status: 'Pendente',
-    },
-    {
-      id: 2,
-      totalPrice: 55.10,
-      deliveryAddress: 'Rua Joao, 55 - Centro, Salvador - BA',
-      saleDate: '03/05/2022',
-      status: 'Preparando',
-    },
-    {
-      id: 3,
-      totalPrice: 123.99,
-      deliveryAddress: 'Rua Zé, 15 - Centro, Porto Alegre - RS',
-      saleDate: '10/05/2022',
-      status: 'Em Trânsito',
-    },
-    {
-      id: 4,
-      totalPrice: 68.70,
-      deliveryAddress: 'Rua Joaquina, 1467 - Centro, Belo Horizonte - MG',
-      saleDate: '07/05/2022',
-      status: 'Entregue',
-    },
-  ];
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  async function requestSales() {
+    const data = await getSales('/sales');
+    console.log('sales:', data);
+    setOrders(JSON.parse(data));
+  }
+
+  useEffect(() => {
+    requestSales();
+    setLoading(false);
+  }, []);
+
+  if (loading) {
+    return (
+      <h1>Loading...</h1>
+    );
+  }
 
   return (
     <>
