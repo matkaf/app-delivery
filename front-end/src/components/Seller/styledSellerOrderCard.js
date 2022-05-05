@@ -25,7 +25,7 @@ export const OrderCategory = styled.div`
       return css`
         p {
           font-size: 12px;
-          overflow-y: auto;
+          overflow-y: hidden;
         }`;
     }
 

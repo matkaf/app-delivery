@@ -12,8 +12,13 @@ function SellerOrdersContainer() {
 
   async function requestSales() {
     const data = await getSales('/sales');
-    console.log('sales:', data);
-    setOrders(JSON.parse(data));
+    console.log(data);
+    try {
+      const newData = JSON.parse(JSON.stringify(data));
+      setOrders(newData);
+    } catch (error) {
+      console.log('erro no parse');
+    }
   }
 
   useEffect(() => {

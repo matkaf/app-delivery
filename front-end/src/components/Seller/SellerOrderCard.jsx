@@ -23,7 +23,7 @@ function SellerOrderCard({ order }) {
 
       <OrderCategory>
         <h3>Valor:</h3>
-        <p>{ totalPrice.toFixed(2) }</p>
+        <p>{ Number(totalPrice).toFixed(2) }</p>
       </OrderCategory>
 
       <OrderCategory address>
@@ -40,7 +40,7 @@ SellerOrderCard.propTypes = {
     id: PropTypes.number,
     saleDate: PropTypes.string,
     status: PropTypes.string,
-    totalPrice: PropTypes.number,
+    totalPrice: PropTypes.string,
   }).isRequired,
 };
 

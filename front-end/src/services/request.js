@@ -22,10 +22,10 @@ export const createUser = async (endpoint, body) => {
 
 export const getSales = async (endpoint) => {
   try {
-    const sales = await api.get(endpoint);
+    const { data } = await api.get(endpoint);
 
-    return { status: true, sales };
+    return data;
   } catch (error) {
-    return { status: false, error: error.message };
+    return { error: error.message };
   }
 };
