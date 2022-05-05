@@ -34,6 +34,12 @@ const userModel = {
   deleteById: async (id) => {
     await users.destroy({ where: { id } });
   },
+  getByRole: async (role) => {
+    const allSellers = await users.findAll(
+      { attributes: ['id', 'name'], where: { role } },
+    );
+    return allSellers;
+  },
 };
 
 module.exports = userModel;
