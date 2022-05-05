@@ -8,13 +8,14 @@ const TotalPriceContext = createContext({});
 function TotalPriceProvider({ children }) {
   const [totalPrice, setTotalPrice] = useState(0);
   const [products, setProducts] = useState([]);
+  const local = localStorage.getItem('carrinho');
 
   function getProductsFromLocalStorage() {
     const exist = localStorage.getItem('carrinho');
     if (exist) {
       setProducts(JSON.parse(exist));
     }
-    if (!exist) setProducts({ amount: 0, price: 0 });
+    if (!exist) setProducts([{ amount: 0, price: 0 }]);
   }
 
   const handleTotal = useCallback(() => {
@@ -25,7 +26,7 @@ function TotalPriceProvider({ children }) {
 
   useEffect(() => {
     getProductsFromLocalStorage();
-  }, []);
+  }, [local]);
 
   useEffect(() => {
     handleTotal();

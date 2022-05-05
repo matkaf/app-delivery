@@ -14,7 +14,7 @@ export default function SeeCartButton() {
   return (
     <CartButton onClick={ seeCart }>
       Ver Carrinho: R$
-      {totalPrice}
+      {totalPrice > 0 ? totalPrice : '0'}
     </CartButton>
   );
 }
