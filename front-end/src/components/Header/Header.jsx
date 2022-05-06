@@ -1,8 +1,17 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { DivL, DivR, Nav } from './styledHeader';
 
 export default function Header({ clientName }) {
+  const navigate = useNavigate();
+
+  function handleLogout() {
+    console.log('sair');
+    localStorage.clear();
+    navigate('/login');
+  }
+
   return (
     <header>
       <Nav>
@@ -25,6 +34,7 @@ export default function Header({ clientName }) {
             {clientName}
           </DivR>
           <DivR
+            onClick={ () => handleLogout() }
             data-testid="customer_products__element-navbar-link-logout"
           >
             Sair
