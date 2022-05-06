@@ -1,23 +1,40 @@
 import React, { useEffect, useState } from 'react';
-import { requestUsers } from '../../services/request';
+import { createSale, requestUsers } from '../../services/request';
 import { Label, Form, InputAddress, Container, Button } from './styledDeliveryAddress';
 
 function DeliveryAddress({ totalPrice }) {
-  const [users, setUsers] = useState([]);
-  const [orderSeller, setOrderSeller] = useState([]);
+  const [sellers, setSellers] = useState([]);
   const [address, setAddress] = useState([]);
   const [numberAnddress, setNumberAddress] = useState([]);
+  const [orderSeller, setOrderSeller] = useState('');
 
-  const handleClick = async () => {
-    const { token } = user;
-    const salePayload = {};
+  const handleClick = () => {
+    const { id } = JSON.parse(localStorage.getItem('user'));
+    const salePayload = {
+      userId: id,
+      sellerId: orderSeller,
+      deliveryAddress: address,
+      deliveryNumber: numberAnddress,
+      totalPrice,
+    };
+    const saleId = fetchSale(salePayload);
   };
 
+  const fetchSale = async (payload) => {
+    try {
+      const endpoint = '/sales';
+      const sale = await createSale(endpoint, payload);
+      return sale;
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const fetchUsers = async () => {
     try {
-      const endpoint = '/users';
-      const allUsers = await requestUsers(endpoint);
-      setUsers(allUsers.filter((el) => el.role === 'seller'));
+      const endpoint = '/users/search?role=seller';
+      const allUsersSellers = await requestUsers(endpoint);
+      setSellers(allUsersSellers);
+      setOrderSeller(allUsersSellers[0].id);
     } catch (error) {
       console.error(error);
     }
@@ -32,25 +49,44 @@ function DeliveryAddress({ totalPrice }) {
       <h4>Detalhes e Endereço para Entrega</h4>
       <Container>
         <Form>
-          <Label htmlFor="vendedor">
+          <Label htmlFor="seller">
             P.vendedora Responsável
-            <select id="vendedor" onChange={ (e) => setOrderSeller(e.target.value) }>
+            <select
+              id="seller"
+              value={ orderSeller }
+              onChange={ (e) => setOrderSeller(e.target.value) }
+            >
               {
-                users
-                  .map((seller) => <option key={ seller.email }>{seller.name}</option>)
+                sellers
+                  .map(({ id, name }) => (
+                    <option
+                      value={ id }
+                      key={ id }
+                    >
+                      {name}
+                    </option>
+                  ))
               }
             </select>
           </Label>
           <Label htmlFor="adress">
             Endereço
-            <InputAddress type="text" onChange={ (e) => setAddress(e.target.value) } />
+            <InputAddress
+              type="text"
+              value={ address }
+              onChange={ (e) => setAddress(e.target.value) }
+            />
           </Label>
           <Label htmlFor="adress">
             Número
-            <input type="text" onChange={ (e) => setNumberAddress(e.target.value) } />
+            <input
+              type="text"
+              value={ numberAnddress }
+              onChange={ (e) => setNumberAddress(e.target.value) }
+            />
           </Label>
         </Form>
-        <Button onclick={ handleClick } type="button">FINALIZAR PEDIDO</Button>
+        <Button onClick={ handleClick } type="button">FINALIZAR PEDIDO</Button>
       </Container>
     </div>
   );
