@@ -20,12 +20,12 @@ function OrderDetailTable() {
   const handleRemove = ({ target }) => {
     const newProducts = products.filter((el) => el.product !== target.name);
     setProducts(newProducts);
-    localStorage.setItem('pedido', JSON.stringify(newProducts));
+    localStorage.setItem('carrinho', JSON.stringify(newProducts));
   };
 
   const handleTotal = useCallback(() => {
     const allprice = products
-      .reduce((total, { quantity, price }) => total + (quantity * price), 0).toFixed(2);
+      .reduce((total, { amount, price }) => total + (amount * price), 0).toFixed(2);
 
     setTotalPrice(allprice);
     return allprice;
@@ -36,7 +36,7 @@ function OrderDetailTable() {
   }, [handleTotal]);
 
   useEffect(() => {
-    const exists = localStorage.getItem('pedido');
+    const exists = localStorage.getItem('carrinho');
     const json = JSON.parse(exists);
     if (exists) {
       setProducts(json);
@@ -50,18 +50,18 @@ function OrderDetailTable() {
         <tr>
           {tableHeaderNames.map((name) => <th key={ name }>{name}</th>)}
         </tr>
-        { products.map(({ product, quantity, price }, index) => (
-          <tr data-testid={ `element-order-table-name-${index}` } key={ product }>
+        { products.map(({ drinkName, amount, price }, index) => (
+          <tr data-testid={ `element-order-table-name-${index}` } key={ drinkName }>
             <TdItem>{index + 1}</TdItem>
-            <TdDescricao>{product}</TdDescricao>
-            <TdQuantidade>{quantity}</TdQuantidade>
+            <TdDescricao>{drinkName}</TdDescricao>
+            <TdQuantidade>{amount}</TdQuantidade>
             <TdValorUnitario>{`R$${price}`}</TdValorUnitario>
-            <TdSubTotal>{`R$ ${price * quantity}`}</TdSubTotal>
+            <TdSubTotal>{`R$ ${price * amount}`}</TdSubTotal>
             { location === '/customer/checkout'
             && (
               <Button
                 type="button"
-                name={ product }
+                name={ drinkName }
                 onClick={ (e) => handleRemove(e) }
               >
                 Remover

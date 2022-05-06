@@ -7,9 +7,10 @@ function DeliveryAddress({ totalPrice }) {
   const [address, setAddress] = useState([]);
   const [numberAnddress, setNumberAddress] = useState([]);
   const [orderSeller, setOrderSeller] = useState('');
+  const [user, setUser] = useState();
 
   const handleClick = () => {
-    const { id } = JSON.parse(localStorage.getItem('user'));
+    const { id } = user;
     const salePayload = {
       userId: id,
       sellerId: orderSeller,
@@ -41,6 +42,7 @@ function DeliveryAddress({ totalPrice }) {
   };
 
   useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem('user')));
     fetchUsers();
   }, []);
 
