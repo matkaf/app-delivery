@@ -34,7 +34,7 @@ export default function DrinkCard({ id, price, imageUrl, drinkName }) {
 
   return (
     <CardContainer data-testid={ `customer_products__element-card-price-${id}` }>
-      <PriceContainer>{price}</PriceContainer>
+      <PriceContainer>{price.replace('.', ',')}</PriceContainer>
       <Img
         src={ imageUrl }
         alt={ drinkName }
