@@ -14,7 +14,7 @@ export default function SeeCartButton() {
 
   return (
     <CartButton
-      disabled={ !products.length }
+      disabled={ +totalPrice === 0 }
       onClick={ seeCart }
       data-testid="customer_products__button-cart"
     >
