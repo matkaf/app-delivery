@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
     sellerId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      foreignKey: true 
+      foreignKey: true
     },
   },
   {
