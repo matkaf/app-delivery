@@ -1,18 +1,19 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useTotalPrice } from '../../hooks/useTotalPrice';
+import { useShoppingCart } from '../../hooks/useTotalPrice';
 import CartButton from './styledSeeCartButton';
 
 export default function SeeCartButton() {
-  const { totalPrice } = useTotalPrice();
+  const { totalPrice, products } = useShoppingCart();
   const navigate = useNavigate();
 
   const seeCart = () => {
+    localStorage.setItem('carrinho', JSON.stringify(products));
     navigate('/customer/checkout');
   };
 
   return (
-    <CartButton onClick={ seeCart }>
+    <CartButton disabled={ !products.length } onClick={ seeCart }>
       Ver Carrinho: R$
       {totalPrice > 0 ? totalPrice : '0'}
     </CartButton>

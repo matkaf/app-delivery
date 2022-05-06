@@ -3,30 +3,17 @@ import React, {
   createContext, useCallback, useContext, useEffect, useMemo, useState,
 } from 'react';
 
-const TotalPriceContext = createContext({});
+const ShoppingCartContext = createContext({});
 
-function TotalPriceProvider({ children }) {
+function ShoppingCartProvider({ children }) {
   const [totalPrice, setTotalPrice] = useState(0);
   const [products, setProducts] = useState([]);
-  const local = localStorage.getItem('carrinho');
-
-  function getProductsFromLocalStorage() {
-    const exist = localStorage.getItem('carrinho');
-    if (exist) {
-      setProducts(JSON.parse(exist));
-    }
-    if (!exist) setProducts([{ amount: 0, price: 0 }]);
-  }
 
   const handleTotal = useCallback(() => {
     const sumPrice = products
       .reduce((total, { amount, price }) => total + (amount * price), 0).toFixed(2);
     setTotalPrice(sumPrice);
   }, [products]);
-
-  useEffect(() => {
-    getProductsFromLocalStorage();
-  }, [local]);
 
   useEffect(() => {
     handleTotal();
@@ -36,27 +23,29 @@ function TotalPriceProvider({ children }) {
     () => ({
       totalPrice,
       setTotalPrice,
+      products,
+      setProducts,
     }),
-    [totalPrice],
+    [products, totalPrice],
   );
 
   return (
-    <TotalPriceContext.Provider value={ foo }>{children}</TotalPriceContext.Provider>
+    <ShoppingCartContext.Provider value={ foo }>{children}</ShoppingCartContext.Provider>
   );
 }
 
-TotalPriceProvider.propTypes = {
+ShoppingCartProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const useTotalPrice = () => {
-  const context = useContext(TotalPriceContext);
+const useShoppingCart = () => {
+  const context = useContext(ShoppingCartContext);
 
   if (!context) {
-    throw new Error('useTotalPrice must be used within an TotalPriceProvider');
+    throw new Error('useShoppingCart must be used within an ShoppingCartProvider');
   }
 
   return context;
 };
 
-export { useTotalPrice, TotalPriceProvider };
+export { useShoppingCart, ShoppingCartProvider };

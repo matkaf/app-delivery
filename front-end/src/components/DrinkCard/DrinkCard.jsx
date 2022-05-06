@@ -1,30 +1,27 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+import { useShoppingCart } from '../../hooks/useTotalPrice';
 import Counter from '../Counter/Counter';
-import { Img, PriceContainer, CardContainer, FooterCard } from './styledDrinkCard';
+import { CardContainer, FooterCard, Img, PriceContainer } from './styledDrinkCard';
 
 export default function DrinkCard({ id, price, imageUrl, drinkName }) {
   const [amount, setAmount] = useState(0);
+  const { products, setProducts } = useShoppingCart();
 
-  function addToLocalStorage(value) {
-    const products = { id, drinkName, price, amount: value };
-    const exist = localStorage.getItem('carrinho');
-    if (exist) {
-      const cartItems = JSON.parse(exist).filter((el) => el.id !== id);
-      localStorage.setItem('carrinho', JSON.stringify([...cartItems, { ...products }]));
-      return;
-    }
-    localStorage.setItem('carrinho', JSON.stringify([products]));
+  function addToCart(value) {
+    const productPayload = { id, drinkName, price, amount: value };
+    const cartItems = products.filter((el) => el.id !== id);
+    setProducts([...cartItems, { ...productPayload }]);
   }
 
   function handleClick(event) {
     if (event.target.innerHTML === '+') {
       setAmount(+amount + 1);
-      addToLocalStorage(+amount + 1);
+      addToCart(+amount + 1);
     }
     if (event.target.innerHTML === '-') {
       setAmount(+amount > 0 ? +amount - 1 : 0);
-      addToLocalStorage(+amount - 1);
+      addToCart(+amount > 0 ? +amount - 1 : 0);
     }
   }
 
