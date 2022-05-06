@@ -29,3 +29,4 @@ export const createSale = async (endpoint, body) => {
   const { data } = await api.post(endpoint, body);
   return data;
 };
+export const getDrinks = async (endpoint) => api.get(endpoint);
