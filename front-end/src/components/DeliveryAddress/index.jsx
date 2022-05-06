@@ -1,13 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { createSale, requestUsers } from '../../services/request';
+import { requestUsers } from '../../services/request';
 import { Label, Form, InputAddress, Container, Button } from './styledDeliveryAddress';
 
-function DeliveryAddress({ totalPrice }) {
+function DeliveryAddress() {
   const [sellers, setSellers] = useState([]);
   const [address, setAddress] = useState([]);
   const [numberAnddress, setNumberAddress] = useState([]);
   const [orderSeller, setOrderSeller] = useState('');
-  const [user, setUser] = useState();
+  // const [user, setUser] = useState();
+
+  /* const fetchSale = async (payload) => {
+    try {
+      const endpoint = '/sales';
+      const sale = await createSale(endpoint, payload);
+      return sale;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleClick = () => {
     const { id } = user;
@@ -19,17 +29,8 @@ function DeliveryAddress({ totalPrice }) {
       totalPrice,
     };
     const saleId = fetchSale(salePayload);
-  };
+  }; */
 
-  const fetchSale = async (payload) => {
-    try {
-      const endpoint = '/sales';
-      const sale = await createSale(endpoint, payload);
-      return sale;
-    } catch (error) {
-      console.log(error);
-    }
-  };
   const fetchUsers = async () => {
     try {
       const endpoint = '/users/search?role=seller';
@@ -42,7 +43,7 @@ function DeliveryAddress({ totalPrice }) {
   };
 
   useEffect(() => {
-    setUser(JSON.parse(localStorage.getItem('user')));
+    // setUser(JSON.parse(localStorage.getItem('user')));
     fetchUsers();
   }, []);
 
@@ -57,6 +58,7 @@ function DeliveryAddress({ totalPrice }) {
               id="seller"
               value={ orderSeller }
               onChange={ (e) => setOrderSeller(e.target.value) }
+              data-testid="customer_checkout__select-seller"
             >
               {
                 sellers
@@ -77,6 +79,7 @@ function DeliveryAddress({ totalPrice }) {
               type="text"
               value={ address }
               onChange={ (e) => setAddress(e.target.value) }
+              data-testid="customer_checkout__input-address"
             />
           </Label>
           <Label htmlFor="adress">
@@ -85,13 +88,24 @@ function DeliveryAddress({ totalPrice }) {
               type="text"
               value={ numberAnddress }
               onChange={ (e) => setNumberAddress(e.target.value) }
+              data-testid="customer_checkout__input-addressNumber"
             />
           </Label>
         </Form>
-        <Button onClick={ handleClick } type="button">FINALIZAR PEDIDO</Button>
+        <Button
+          onClick={ handleClick }
+          type="button"
+          data-testid="customer_checkout__button-submit-order"
+        >
+          FINALIZAR PEDIDO
+        </Button>
       </Container>
     </div>
   );
 }
+
+/* DeliveryAddress.propTypes = {
+  totalPrice: PropTypes.string.isRequired,
+}; */
 
 export default DeliveryAddress;
