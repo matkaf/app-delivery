@@ -10,6 +10,11 @@ export const requestLogin = async (endpoint, body) => {
   return data;
 };
 
+export const requestUsers = async (endpoint) => {
+  const { data } = await api.get(endpoint);
+  return data;
+};
+
 export const createUser = async (endpoint, body) => {
   try {
     await api.post(endpoint, body);
