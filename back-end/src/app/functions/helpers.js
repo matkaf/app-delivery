@@ -7,15 +7,16 @@ const passwordToHash = (userObj) => {
 };
 
 const toConvertSale = (saleObj) => {
-  const newSale = saleObj
-    .map(({ userId, sellerId, totalPrice, deliveryAddress, deliveryNumber }) => ({
-        userId,
-        sellerId,
-        totalPrice,
-        deliveryAddress,
-        deliveryNumber,
-      }));
-  return newSale;
+  const {
+    userId, sellerId, totalPrice, deliveryAddress, deliveryNumber,
+  } = saleObj;
+  return {
+    userId,
+    sellerId,
+    totalPrice,
+    deliveryAddress,
+    deliveryNumber,
+  };
 };
 
 module.exports = {
