@@ -27,6 +27,10 @@ const userService = {
   deleteById: async (id) => {
     await userModel.deleteById(id);
   },
+  getByRole: async (role) => {
+    const allSeller = await userModel.getByRole(role);
+    return allSeller;
+  },
 };
 
 module.exports = userService;

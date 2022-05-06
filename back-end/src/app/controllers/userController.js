@@ -29,6 +29,11 @@ const userController = {
     await userService.deleteById(id);
     return res.status(StatusCodes.NO_CONTENT).end();
   },
+  getByRole: async (req, res) => {
+    const { role } = req.query;
+    const allSellers = await userService.getByRole(role);
+    return res.status(StatusCodes.OK).json(allSellers);
+  },
 };
 
 module.exports = userController;
