@@ -5,8 +5,6 @@ const loginModel = {
     const user = await users.findOne({
       where: { email, password },
     });
-    // const { name, email, role } = user;
-    // return { name, email, role };
     return user;
   },
 };

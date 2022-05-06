@@ -8,8 +8,8 @@ const loginService = {
     const user = await loginModel.auth({ email, password: passwordMd5 });
     if (user) {
       const token = generatorJwt(user);
-      const { name, role } = user;
-      return { token, name, email: user.email, role };
+      const { id, name, role } = user;
+      return { token, id, name, email: user.email, role };
     }
   },
 };
