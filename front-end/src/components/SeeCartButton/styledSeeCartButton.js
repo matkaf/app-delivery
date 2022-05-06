@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const CartButton = styled.div` 
+const CartButton = styled.button` 
   position: absolute;
 `;
 
