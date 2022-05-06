@@ -24,3 +24,8 @@ export const createUser = async (endpoint, body) => {
     return false;
   }
 };
+
+export const createSale = async (endpoint, body) => {
+  const { data } = await api.post(endpoint, body);
+  return data;
+};
