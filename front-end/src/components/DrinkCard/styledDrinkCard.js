@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 const CardContainer = styled.div`
+  margin-top: 1.5rem;
+  position: relative;
   display: flex;
   text-align: center;
   flex-direction: column;
@@ -12,12 +14,14 @@ const CardContainer = styled.div`
 `;
 
 const Img = styled.img`
-  width: 20rem;
+  width: auto;
   height: 20rem;
 `;
 
 const PriceContainer = styled.div`
-  background-color: #ede4e2;
+  background-color: #F2FFFC;
+  left: 1rem;
+  top: 0.5rem;
   border-radius: 5px;
   font-size: 2rem;
   position: absolute;
@@ -29,10 +33,10 @@ const FooterCard = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  background-color: #F2FFFC;
-  width: 21.9rem;
+  background-color: #E5E5E5;
+  width: 100%;
   height: 6rem;
-  box-shadow: 1px 2px rgb(192,192,192)
+  box-shadow: 1px rgb(192,192,192)
 `;
 
 export { Img, PriceContainer, CardContainer, FooterCard };
