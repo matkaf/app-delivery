@@ -26,10 +26,8 @@ export default function DrinkCard({ id, price, imageUrl, drinkName }) {
   }
 
   function handleChange({ target }) {
-    setAmount(target.value);
-    if (target.value > 0) {
-      addToLocalStorage(target.value);
-    }
+    setAmount(target.value > 0 ? target.value : 0);
+    addToCart(target.value);
   }
 
   return (

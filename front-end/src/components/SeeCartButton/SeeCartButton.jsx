@@ -16,10 +16,14 @@ export default function SeeCartButton() {
     <CartButton
       disabled={ !products.length }
       onClick={ seeCart }
-      data-testid="customer_products__checkout-bottom-value"
+      data-testid="customer_products__button-cart"
     >
       Ver Carrinho: R$
-      {totalPrice > 0 ? totalPrice : '0'}
+      <span
+        data-testid="customer_products__checkout-bottom-value"
+      >
+        {totalPrice > 0 ? totalPrice.replace('.', ',') : '0'}
+      </span>
     </CartButton>
   );
 }
