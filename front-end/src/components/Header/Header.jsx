@@ -7,12 +7,28 @@ export default function Header({ clientName }) {
     <header>
       <Nav>
         <div>
-          <DivL>PRODUTOS</DivL>
-          <DivL>MEUS PEDIDOS</DivL>
+          <DivL
+            data-testid="customer_products__element-navbar-link-products"
+          >
+            PRODUTOS
+          </DivL>
+          <DivL
+            data-testid="customer_products__element-navbar-link-orders"
+          >
+            MEUS PEDIDOS
+          </DivL>
         </div>
         <div>
-          <DivR>{clientName}</DivR>
-          <DivR>Sair</DivR>
+          <DivR
+            data-testid="customer_products__element-navbar-user-full-name"
+          >
+            {clientName}
+          </DivR>
+          <DivR
+            data-testid="customer_products__element-navbar-link-logout"
+          >
+            Sair
+          </DivR>
         </div>
       </Nav>
     </header>

@@ -13,7 +13,11 @@ export default function SeeCartButton() {
   };
 
   return (
-    <CartButton disabled={ !products.length } onClick={ seeCart }>
+    <CartButton
+      disabled={ !products.length }
+      onClick={ seeCart }
+      data-testid="customer_products__checkout-bottom-value"
+    >
       Ver Carrinho: R$
       {totalPrice > 0 ? totalPrice : '0'}
     </CartButton>

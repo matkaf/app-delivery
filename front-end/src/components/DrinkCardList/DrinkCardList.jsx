@@ -16,7 +16,7 @@ export default function DrinkCardList() {
             key={ id }
             id={ id }
             price={ price }
-            imageUrl={ `http://localhost:3001${urlImage}` }
+            imageUrl={ urlImage }
             drinkName={ name }
           />
         ))}

@@ -35,13 +35,22 @@ export default function DrinkCard({ id, price, imageUrl, drinkName }) {
   return (
     <CardContainer data-testid={ `customer_products__element-card-price-${id}` }>
       <PriceContainer>{price}</PriceContainer>
-      <Img src={ imageUrl } alt={ drinkName } />
+      <Img
+        src={ imageUrl }
+        alt={ drinkName }
+        data-testid={ `customer_products__img-card-bg-image-${id}` }
+      />
       <FooterCard>
-        <h4>{ drinkName }</h4>
+        <h4
+          data-testid={ `customer_products__element-card-title-${id}` }
+        >
+          { drinkName }
+        </h4>
         <Counter
           value={ amount }
           onClick={ (event) => handleClick(event) }
           onChange={ (event) => handleChange(event) }
+          id={ id }
         />
       </FooterCard>
     </CardContainer>
