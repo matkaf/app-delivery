@@ -7,8 +7,10 @@ const CartButton = styled.button`
   height: 79px;
   color: white;
   position: fixed;
-  top: 50rem;
-  left: 85rem;
+  bottom: 0; // << medida provisória pra passar no 16
+  right: 0; // << medida provisória pra passar no 16
+  // top: 50rem;  << motivo do requisito 16 estar quebrando
+  // left: 85rem; << motivo do requisito 16 estar quebrando
 `;
 
 export default CartButton;
