@@ -29,3 +29,5 @@ export const getSales = async (endpoint) => {
     return { error: error.message };
   }
 };
+
+export const getDrinks = async (endpoint) => api.get(endpoint);

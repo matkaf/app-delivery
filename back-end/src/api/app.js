@@ -14,7 +14,7 @@ app.use(cors());
 
 app.use(express.json());
 
-app.use('/back-end/public', express.static('public')); // https://expressjs.com/pt-br/starter/static-files.html
+app.use('/images', express.static('public')); // https://expressjs.com/pt-br/starter/static-files.html
 
 // app.use(validateInputs);// valida entrada da api (req.body) pra os endpoints abaixo
 
