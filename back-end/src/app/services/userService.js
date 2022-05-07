@@ -1,5 +1,5 @@
 const userModel = require('../models/userModel');
-const passwordToHash = require('../functions/helpers');
+const { passwordToHash } = require('../functions/helpers');
 
 const userService = {
   create: async (user) => {

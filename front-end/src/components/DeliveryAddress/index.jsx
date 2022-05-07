@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { requestUsers } from '../../services/request';
 import { Label, Form, InputAddress, Container, Button } from './styledDeliveryAddress';
@@ -7,9 +8,9 @@ function DeliveryAddress() {
   const [address, setAddress] = useState([]);
   const [numberAnddress, setNumberAddress] = useState([]);
   const [orderSeller, setOrderSeller] = useState('');
-  // const [user, setUser] = useState();
+  const [user, setUser] = useState();
 
-  /* const fetchSale = async (payload) => {
+  const fetchSale = async (payload) => {
     try {
       const endpoint = '/sales';
       const sale = await createSale(endpoint, payload);
@@ -29,7 +30,7 @@ function DeliveryAddress() {
       totalPrice,
     };
     const saleId = fetchSale(salePayload);
-  }; */
+  };
 
   const fetchUsers = async () => {
     try {
@@ -43,7 +44,7 @@ function DeliveryAddress() {
   };
 
   useEffect(() => {
-    // setUser(JSON.parse(localStorage.getItem('user')));
+    setUser(JSON.parse(localStorage.getItem('user')));
     fetchUsers();
   }, []);
 
@@ -104,8 +105,8 @@ function DeliveryAddress() {
   );
 }
 
-/* DeliveryAddress.propTypes = {
+DeliveryAddress.propTypes = {
   totalPrice: PropTypes.string.isRequired,
-}; */
+};
 
 export default DeliveryAddress;
