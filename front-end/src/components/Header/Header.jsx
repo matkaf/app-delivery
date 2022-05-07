@@ -1,16 +1,21 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { DivL, DivR, Nav } from './styledHeader';
 
-export default function Header({ clientName }) {
+export default function Header() {
   const navigate = useNavigate();
+  const [userName, setUserName] = useState('');
 
   function handleLogout() {
     console.log('sair');
     localStorage.clear();
     navigate('/login');
   }
+
+  useEffect(() => {
+    const { name } = JSON.parse(localStorage.getItem('user'));
+    setUserName(name);
+  }, []);
 
   return (
     <header>
@@ -31,7 +36,7 @@ export default function Header({ clientName }) {
           <DivR
             data-testid="customer_products__element-navbar-user-full-name"
           >
-            {clientName}
+            {userName}
           </DivR>
           <DivR
             onClick={ () => handleLogout() }
@@ -44,7 +49,3 @@ export default function Header({ clientName }) {
     </header>
   );
 }
-
-Header.propTypes = {
-  clientName: PropTypes.string.isRequired,
-};
