@@ -19,7 +19,19 @@ const toConvertSale = (saleObj) => {
   };
 };
 
+const toConvertProductsArray = (saleId, productsArray) => {
+  const newProductsArray = productsArray.map((product) => (
+    {
+      saleId,
+      productId: Number(product.id),
+      quantity: Number(product.quantity),
+    }
+  ));
+  return newProductsArray;
+};
+
 module.exports = {
   passwordToHash,
   toConvertSale,
+  toConvertProductsArray,
 };
