@@ -18,7 +18,7 @@ function OrderDetailTable() {
   const location = useLocation().pathname;
 
   const handleRemove = ({ target }) => {
-    const newProducts = products.filter((el) => el.product !== target.name);
+    const newProducts = products.filter((el) => el.drinkName !== target.name);
     setProducts(newProducts);
     localStorage.setItem('carrinho', JSON.stringify(newProducts));
   };
