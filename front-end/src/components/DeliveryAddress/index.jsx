@@ -1,6 +1,7 @@
 // import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { requestUsers, createSale } from '../../services/request';
+import { useNavigate } from 'react-router-dom';
+import { requestUsers, createSale, setToken } from '../../services/request';
 import { Label, Form, InputAddress, Container, Button } from './styledDeliveryAddress';
 import { useShoppingCart } from '../../hooks/useTotalPrice';
 
@@ -12,6 +13,7 @@ function DeliveryAddress() {
   const [user, setUser] = useState();
   const [products, setProducts] = useState();
   const { totalPrice } = useShoppingCart();
+  const navigate = useNavigate();
 
   const fetchSale = async (payload) => {
     try {
@@ -24,7 +26,7 @@ function DeliveryAddress() {
   };
 
   const handleClick = async () => {
-    const { id } = user;
+    const { id, token } = user;
     const salePayload = {
       userId: id,
       sellerId: orderSeller,
@@ -33,9 +35,9 @@ function DeliveryAddress() {
       totalPrice,
       productsArray: products,
     };
-
-    const teste = await fetchSale(salePayload);
-    console.log(teste);
+    setToken(token);
+    const saleId = await fetchSale(salePayload);
+    navigate(`/customer/orders/${saleId}`);
   };
 
   const fetchUsers = async () => {
