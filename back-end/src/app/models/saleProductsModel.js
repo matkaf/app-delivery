@@ -1,8 +1,8 @@
-const { salesproducts } = require('../../database/models');
+const { salesProducts } = require('../../database/models');
 
 const saleProductModel = {
   create: async (saleProductObj) => {
-    const newSaleProduct = await salesproducts.create({ ...saleProductObj });
+    const newSaleProduct = await salesProducts.create({ ...saleProductObj });
     return newSaleProduct;
   },
 };
