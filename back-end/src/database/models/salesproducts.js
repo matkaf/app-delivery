@@ -1,7 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   const SalesProduct = sequelize.define('salesProducts',
     {
-      
       quantity: {
         allowNull: false,
         type: DataTypes.INTEGER
@@ -10,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     { 
       underscored: true,
       timestamps: false,
-      tablename: 'salesProducts' 
+      tablename: 'sales_products'
     });
 
     SalesProduct.associate = (models) => {
