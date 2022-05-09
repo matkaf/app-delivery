@@ -25,11 +25,14 @@ function OrderDetailTable() {
 
   const handleTotal = useCallback(() => {
     const allprice = products
-      .reduce((total, { amount, price }) => total + (amount * price), 0).toFixed(2);
+      .reduce((total, { amount, price }) => total + (amount * price), 0);
 
     setTotalPrice(allprice);
     return allprice;
   }, [products]);
+
+  const convertToBRL = (value) => value.toLocaleString('pt-br',
+    { style: 'currency', currency: 'BRL' });
 
   useEffect(() => {
     handleTotal();
@@ -44,14 +47,19 @@ function OrderDetailTable() {
   }, []);
 
   return (
-    <div>
+    <tbody>
       <h4>Detalhe Do pedido</h4>
       <Table>
         <tr>
           {tableHeaderNames.map((name) => <th key={ name }>{name}</th>)}
         </tr>
         { products.map(({ drinkName, amount, price }, index) => (
-          <tr data-testid={ `element-order-table-name-${index}` } key={ drinkName }>
+          <tr
+            data-testid={
+              `customer_checkout__eelement-order-table-name-${index}`
+            }
+            key={ drinkName }
+          >
             <TdItem
               data-testid={
                 `customer_checkout__element-order-table-item-number-${index}`
@@ -78,14 +86,14 @@ function OrderDetailTable() {
                 `customer_checkout__element-order-table-unit-price-${index}`
               }
             >
-              {`R$${price}`}
+              { convertToBRL(Number(price)) }
             </TdValorUnitario>
             <TdSubTotal
               data-testid={
                 `customer_checkout__element-order-table-sub-total-${index}`
               }
             >
-              {`R$ ${price * amount}`}
+              { convertToBRL(price * amount) }
             </TdSubTotal>
             { location === '/customer/checkout'
             && (
@@ -106,12 +114,12 @@ function OrderDetailTable() {
           <Div
             data-testid="customer_checkout__element-order-total-price"
           >
-            {`Total: R$${totalPrice}`}
+            { `Total: ${convertToBRL(totalPrice)}`}
 
           </Div>
         </tr>
       </Table>
-    </div>
+    </tbody>
   );
 }
 

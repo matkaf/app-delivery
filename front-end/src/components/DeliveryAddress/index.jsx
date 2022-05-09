@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { requestUsers } from '../../services/request';
 import { Label, Form, InputAddress, Container, Button } from './styledDeliveryAddress';
@@ -29,7 +29,8 @@ function DeliveryAddress() {
       deliveryNumber: numberAnddress,
       totalPrice,
     };
-    const saleId = fetchSale(salePayload);
+
+    fetchSale(salePayload);
   };
 
   const fetchUsers = async () => {
@@ -105,8 +106,8 @@ function DeliveryAddress() {
   );
 }
 
-DeliveryAddress.propTypes = {
-  totalPrice: PropTypes.string.isRequired,
-};
+// DeliveryAddress.propTypes = {
+//   totalPrice: PropTypes.string.isRequired,
+// };
 
 export default DeliveryAddress;
