@@ -12,7 +12,7 @@ const saleController = {
     const { productsArray } = req.body;
     const saleObj = toConvertSale(req.body);
 
-    const newSaleProduct = await sequelize.transaction(async (transaction) => {
+    await sequelize.transaction(async (transaction) => {
       const newSale = await saleService.create(saleObj, { transaction });
       console.log(newSale);
       const products = toConvertProductsArray(newSale.dataValues.id, productsArray);
@@ -20,9 +20,8 @@ const saleController = {
         saleProductService.create(saleProductObj, { transaction })
       ));
       await Promise.all(allProducts);
+      return res.status(StatusCodes.CREATED).json(newSale.id);
     });
-
-    return res.status(StatusCodes.CREATED).json(newSaleProduct);
   },
   getAll: async (_req, res) => {
     const allSales = await saleService.getAll();
