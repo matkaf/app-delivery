@@ -18,7 +18,7 @@ const saleController = {
       const allProducts = products.map((saleProductObj) => (
         saleProductService.create(saleProductObj, { transaction })
       ));
-      Promise.all(allProducts);
+      await Promise.all(allProducts);
     });
 
     return res.status(StatusCodes.CREATED).json(newSaleProduct);
