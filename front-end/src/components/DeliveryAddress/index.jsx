@@ -1,14 +1,17 @@
 // import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { requestUsers } from '../../services/request';
+import { requestUsers, createSale } from '../../services/request';
 import { Label, Form, InputAddress, Container, Button } from './styledDeliveryAddress';
+import { useShoppingCart } from '../../hooks/useTotalPrice';
 
 function DeliveryAddress() {
   const [sellers, setSellers] = useState([]);
   const [address, setAddress] = useState([]);
-  const [numberAnddress, setNumberAddress] = useState([]);
+  const [numberAddress, setNumberAddress] = useState([]);
   const [orderSeller, setOrderSeller] = useState('');
   const [user, setUser] = useState();
+  const [products, setProducts] = useState();
+  const { totalPrice } = useShoppingCart();
 
   const fetchSale = async (payload) => {
     try {
@@ -20,17 +23,19 @@ function DeliveryAddress() {
     }
   };
 
-  const handleClick = () => {
+  const handleClick = async () => {
     const { id } = user;
     const salePayload = {
       userId: id,
       sellerId: orderSeller,
       deliveryAddress: address,
-      deliveryNumber: numberAnddress,
+      deliveryNumber: numberAddress,
       totalPrice,
+      productsArray: products,
     };
 
-    fetchSale(salePayload);
+    const teste = await fetchSale(salePayload);
+    console.log(teste);
   };
 
   const fetchUsers = async () => {
@@ -44,9 +49,15 @@ function DeliveryAddress() {
     }
   };
 
+  const getCartProducts = () => {
+    const allProducts = JSON.parse(localStorage.getItem('carrinho'));
+    setProducts(allProducts.map(({ id, amount }) => ({ id, quantity: amount })));
+  };
+
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem('user')));
     fetchUsers();
+    getCartProducts();
   }, []);
 
   return (
@@ -88,7 +99,7 @@ function DeliveryAddress() {
             Número
             <input
               type="text"
-              value={ numberAnddress }
+              value={ numberAddress }
               onChange={ (e) => setNumberAddress(e.target.value) }
               data-testid="customer_checkout__input-addressNumber"
             />
@@ -105,9 +116,5 @@ function DeliveryAddress() {
     </div>
   );
 }
-
-// DeliveryAddress.propTypes = {
-//   totalPrice: PropTypes.string.isRequired,
-// };
 
 export default DeliveryAddress;

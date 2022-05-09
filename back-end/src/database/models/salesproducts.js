@@ -1,6 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
   const SalesProduct = sequelize.define('salesProducts',
     {
+      
       quantity: {
         allowNull: false,
         type: DataTypes.INTEGER

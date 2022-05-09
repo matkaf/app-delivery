@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useShoppingCart } from '../../hooks/useTotalPrice';
 import { Table,
   TdItem,
   TdDescricao,
@@ -13,9 +14,8 @@ const tableHeaderNames = ['Item',
   'Descrição', ' Quantidade', 'Valor Unitário', 'Sub-total', 'Remover Item'];
 
 function OrderDetailTable() {
-  const [products, setProducts] = useState([]);
-  const [totalPrice, setTotalPrice] = useState([]);
   const location = useLocation().pathname;
+  const { totalPrice, setProducts, products } = useShoppingCart();
 
   const handleRemove = ({ target }) => {
     const newProducts = products.filter((el) => el.drinkName !== target.name);
@@ -23,20 +23,8 @@ function OrderDetailTable() {
     localStorage.setItem('carrinho', JSON.stringify(newProducts));
   };
 
-  const handleTotal = useCallback(() => {
-    const allprice = products
-      .reduce((total, { amount, price }) => total + (amount * price), 0);
-
-    setTotalPrice(allprice);
-    return allprice;
-  }, [products]);
-
   const convertToBRL = (value) => value.toLocaleString('pt-br',
     { style: 'currency', currency: 'BRL' });
-
-  useEffect(() => {
-    handleTotal();
-  }, [handleTotal]);
 
   useEffect(() => {
     const exists = localStorage.getItem('carrinho');
@@ -44,7 +32,7 @@ function OrderDetailTable() {
     if (exists) {
       setProducts(json);
     }
-  }, []);
+  }, [setProducts]);
 
   return (
     <tbody>
@@ -114,8 +102,7 @@ function OrderDetailTable() {
           <Div
             data-testid="customer_checkout__element-order-total-price"
           >
-            { `Total: ${convertToBRL(totalPrice)}`}
-
+            { convertToBRL(totalPrice).replace('.', ',')}
           </Div>
         </tr>
       </Table>
