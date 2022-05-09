@@ -10,6 +10,11 @@ export const requestLogin = async (endpoint, body) => {
   return data;
 };
 
+export const requestUsers = async (endpoint) => {
+  const { data } = await api.get(endpoint);
+  return data;
+};
+
 export const createUser = async (endpoint, body) => {
   try {
     await api.post(endpoint, body);
@@ -19,3 +24,19 @@ export const createUser = async (endpoint, body) => {
     return false;
   }
 };
+
+export const getSales = async (endpoint) => {
+  try {
+    const { data } = await api.get(endpoint);
+
+    return data;
+  } catch (error) {
+    return { error: error.message };
+  }
+};
+
+export const createSale = async (endpoint, body) => {
+  const { data } = await api.post(endpoint, body);
+  return data;
+};
+export const getDrinks = async (endpoint) => api.get(endpoint);
