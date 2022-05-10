@@ -5,8 +5,21 @@ import moment from 'moment';
 
 //
 
+const colorByStatus = (status) => {
+  switch (status) {
+  case 'Preparando':
+    return '#6bb9dd';
+  case 'Em trânsito':
+    return '#9869d6';
+  case 'Entregue':
+    return '#a8d47e';
+  default:
+    return '#cac268';
+  }
+};
+
 const Item = mui.styled(mui.Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#6ba6eb' : '#191a190',
+  backgroundColor: theme.palette.mode === 'dark' ? '#6ba6eb' : '#c9c9c9',
   ...theme.typography.body2,
   padding: theme.spacing(1),
   textAlign: 'center',
@@ -15,18 +28,13 @@ const Item = mui.styled(mui.Paper)(({ theme }) => ({
   margin: '0px',
   wordBreak: 'break-word',
   marginLeft: '0',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-around',
 }));
 
-const ItemStatus = mui.styled(mui.Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#6ba6eb' : '#91856d',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-  width: '20%',
-  margin: '0px',
-  wordBreak: 'break-word',
-  marginLeft: '0',
+const ItemStatus = mui.styled(Item)(({ status }) => ({
+  backgroundColor: colorByStatus(status),
 }));
 
 function SellerOrderRowMUI({ order }) {
@@ -40,26 +48,31 @@ function SellerOrderRowMUI({ order }) {
       alignItems="space-evenly"
     >
       <Item data-testid={ `seller_orders__element-order-id-${id}` }>
-        <div>ID do pedido</div>
-        {`${id}`}
+        <h4>ID do pedido:</h4>
+        <p>{id}</p>
       </Item>
 
       <ItemStatus
         data-testid={ `seller_orders__element-delivery-status-${id}` }
+        status={ status }
       >
-        {`Status:${status}`}
+        <h4>Status:</h4>
+        <p>{status}</p>
       </ItemStatus>
 
       <Item data-testid={ `seller_orders__element-order-date-${id}` }>
-        {`Data do pedido:${moment(saleDate).format('DD/MM/YYYY')}`}
+        <h4>Data do pedido:</h4>
+        <p>{ moment(saleDate).format('DD/MM/YYYY') }</p>
       </Item>
 
       <Item data-testid={ `seller_orders__element-card-price-id-${id}` }>
-        {`Valor total:${Number(totalPrice).toFixed(2)}`}
+        <h4>Valor total:</h4>
+        <p>{ Number(totalPrice).toFixed(2) }</p>
       </Item>
 
       <Item data-testid={ `seller_orders__element-card-address-id-${id}` }>
-        {`Endereço:${deliveryAddress}`}
+        <h4>Endereço:</h4>
+        <p>{ deliveryAddress }</p>
       </Item>
     </mui.Stack>
   );

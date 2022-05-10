@@ -47,7 +47,7 @@ function SellerOrdersTableMUI() {
         gap: '5vh',
         minWidth: '770px',
         overflow: 'auto',
-        padding: '12px',
+        padding: '30px',
       } }
     >
       { orders.map((order) => <SellerOrderRowMUI key={ order.id } order={ order } />) }
