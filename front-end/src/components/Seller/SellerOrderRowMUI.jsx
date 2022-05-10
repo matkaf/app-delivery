@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as mui from '@mui/material';
 import moment from 'moment';
 
@@ -39,6 +40,7 @@ const ItemStatus = mui.styled(Item)(({ status }) => ({
 
 function SellerOrderRowMUI({ order }) {
   const { id, status, saleDate, totalPrice, deliveryAddress } = order;
+  const navigate = useNavigate();
 
   return (
     <mui.Stack
@@ -46,6 +48,7 @@ function SellerOrderRowMUI({ order }) {
       divider={ <mui.Divider orientation="vertical" flexItem /> }
       spacing={ 0.2 }
       alignItems="space-evenly"
+      onClick={ () => navigate(`${id}`) }
     >
       <Item data-testid={ `seller_orders__element-order-id-${id}` }>
         <h4>ID do pedido:</h4>
