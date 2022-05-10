@@ -14,8 +14,7 @@ const saleController = {
 
     await sequelize.transaction(async (transaction) => {
       const newSale = await saleService.create(saleObj, { transaction });
-      console.log(newSale);
-      const products = toConvertProductsArray(newSale.dataValues.id, productsArray);
+      const products = toConvertProductsArray(newSale.id, productsArray);
       const allProducts = products.map((saleProductObj) => (
         saleProductService.create(saleProductObj, { transaction })
       ));
