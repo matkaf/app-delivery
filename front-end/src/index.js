@@ -5,11 +5,14 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import GlobalStyle from './globalStyle'
+import { ShoppingCartProvider } from './hooks/useTotalPrice';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
+    <ShoppingCartProvider>
     <App />
+    </ShoppingCartProvider>
     <GlobalStyle/>
     </BrowserRouter>
   </React.StrictMode>,
