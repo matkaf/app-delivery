@@ -25,7 +25,7 @@ export const createUser = async (endpoint, body) => {
   }
 };
 
-export const getSales = async (endpoint) => {
+export const getSalesById = async (endpoint) => {
   try {
     const { data } = await api.get(endpoint);
 

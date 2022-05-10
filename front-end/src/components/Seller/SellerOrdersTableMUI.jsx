@@ -3,7 +3,7 @@ import * as mui from '@mui/material';
 
 import SellerOrderRowMUI from './SellerOrderRowMUI';
 
-import { getSales } from '../../services/request';
+import { getSalesById } from '../../services/request';
 
 //
 
@@ -12,14 +12,10 @@ function SellerOrdersTableMUI() {
   const [loading, setLoading] = useState(true);
 
   async function requestSales() {
-    const data = await getSales('/sales');
+    const { id } = JSON.parse(localStorage.user);
+    const data = await getSalesById(`/sales/${id}`);
     console.log(data);
-    try {
-      const newData = JSON.parse(JSON.stringify(data));
-      setOrders(newData);
-    } catch (error) {
-      console.log('erro no parse');
-    }
+    setOrders([data]); // TODO: alterar
   }
 
   useEffect(() => {
@@ -29,7 +25,17 @@ function SellerOrdersTableMUI() {
 
   if (loading) {
     return (
-      <h1>Loading...</h1>
+      <mui.Container
+        sx={ {
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+          width: '100vw',
+        } }
+      >
+        <mui.CircularProgress color="success" />
+      </mui.Container>
     );
   }
 
