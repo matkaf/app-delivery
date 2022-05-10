@@ -60,12 +60,12 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
-  Sale.associate = (models) => {
-    Sale.hasMany(models.salesProducts, {
-      foreignKey: 'saleId',
-      as: 'sales'
-    });
-  };
+  // Sale.associate = (models) => {
+  //   Sale.hasMany(models.salesProducts, {
+  //     foreignKey: 'saleId',
+  //     as: 'sales'
+  //   });
+  // };
 
   return Sale;
 };
