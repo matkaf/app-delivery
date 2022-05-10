@@ -11,6 +11,10 @@ export default function DrinkCard({ id, price, imageUrl, drinkName }) {
   function addToCart(value) {
     const productPayload = { id, drinkName, price, amount: value };
     const cartItems = products.filter((el) => el.id !== id);
+    if (productPayload.amount === 0) {
+      setProducts([...cartItems]);
+      return;
+    }
     setProducts([...cartItems, { ...productPayload }]);
   }
 
@@ -26,7 +30,7 @@ export default function DrinkCard({ id, price, imageUrl, drinkName }) {
   }
 
   function handleChange({ target }) {
-    setAmount(target.value > 0 ? target.value : 0);
+    setAmount(target.value >= 0 ? target.value : 0);
     addToCart(target.value);
   }
 

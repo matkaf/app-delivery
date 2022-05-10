@@ -6,4 +6,32 @@ const passwordToHash = (userObj) => {
   return { ...userObj, password: passwordMd5 };
 };
 
-module.exports = passwordToHash;
+const toConvertSale = (saleObj) => {
+  const {
+    userId, sellerId, totalPrice, deliveryAddress, deliveryNumber,
+  } = saleObj;
+  return {
+    userId,
+    sellerId,
+    totalPrice,
+    deliveryAddress,
+    deliveryNumber,
+  };
+};
+
+const toConvertProductsArray = (saleId, productsArray) => {
+  const newProductsArray = productsArray.map((product) => (
+    {
+      saleId,
+      productId: Number(product.id),
+      quantity: Number(product.quantity),
+    }
+  ));
+  return newProductsArray;
+};
+
+module.exports = {
+  passwordToHash,
+  toConvertSale,
+  toConvertProductsArray,
+};

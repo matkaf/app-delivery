@@ -1,11 +1,25 @@
+const Sequelize = require('sequelize');
 const { StatusCodes } = require('http-status-codes');
 const saleService = require('../services/saleService');
+const saleProductService = require('../services/saleProductService');
+const config = require('../../database/config/config');
+const { toConvertSale, toConvertProductsArray } = require('../functions/helpers');
+
+const sequelize = new Sequelize(config.development);
 
 const saleController = {
   create: async (req, res) => {
-    const { body } = req;
-    const newSale = await saleService.create(body);
-    return res.status(StatusCodes.CREATED).json(newSale);
+    const { productsArray } = req.body;
+    const saleObj = toConvertSale(req.body);
+
+    await sequelize.transaction(async (transaction) => {
+      const newSale = await saleService.create(saleObj, { transaction });
+      const products = toConvertProductsArray(newSale.id, productsArray);
+      await Promise.all(products.map((saleProductObj) => (
+        saleProductService.create(saleProductObj, { transaction })
+      )));
+      return res.status(StatusCodes.CREATED).json(newSale.id);
+    });
   },
   getAll: async (_req, res) => {
     const allSales = await saleService.getAll();
