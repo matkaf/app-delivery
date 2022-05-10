@@ -32,8 +32,9 @@ const ItemStatus = mui.styled(mui.Paper)(({ theme }) => ({
 function SellerOrderRowMUI({ order }) {
   const { id, status, saleDate, totalPrice, deliveryAddress } = order;
 
-  console.log('⏩  ~ file: SellerOrderRowMUI.jsx ~ line 34 ~ SellerOrderRowMUI ~ saleDate', saleDate)
-  
+  console.log('⏩  ~ file: SellerOrderRowMUI.jsx ~ line 34 ~ SellerOrderRowMUI ~ saleDate',
+    saleDate);
+
   return (
     <mui.Stack
       direction="row"
