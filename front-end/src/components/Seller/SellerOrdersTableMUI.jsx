@@ -34,7 +34,15 @@ function SellerOrdersTableMUI() {
   }
 
   return (
-    <mui.Container>
+    <mui.Container
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '5vh',
+        minWidth: '770px',
+        overflow: 'auto',
+      }}
+    >
       { orders.map((order) => <SellerOrderRowMUI key={ order.id } order={ order } />) }
     </mui.Container>
   );
