@@ -21,11 +21,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     saleDate: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      defaultValue: DataTypes.NOW
     },
     status: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      defaultValue: 'Pendente'
     },
     userId: {
       type: DataTypes.INTEGER,
@@ -35,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
     sellerId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      foreignKey: true 
+      foreignKey: true
     },
   },
   {
@@ -57,6 +59,13 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'sellerId',
     });
   };
+
+  // Sale.associate = (models) => {
+  //   Sale.hasMany(models.salesProducts, {
+  //     foreignKey: 'saleId',
+  //     as: 'sales'
+  //   });
+  // };
 
   return Sale;
 };

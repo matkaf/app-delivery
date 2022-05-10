@@ -1,15 +1,21 @@
+// import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { requestUsers } from '../../services/request';
+import { useNavigate } from 'react-router-dom';
+import { requestUsers, createSale, setToken } from '../../services/request';
 import { Label, Form, InputAddress, Container, Button } from './styledDeliveryAddress';
+import { useShoppingCart } from '../../hooks/useTotalPrice';
 
 function DeliveryAddress() {
   const [sellers, setSellers] = useState([]);
   const [address, setAddress] = useState([]);
-  const [numberAnddress, setNumberAddress] = useState([]);
+  const [numberAddress, setNumberAddress] = useState([]);
   const [orderSeller, setOrderSeller] = useState('');
-  // const [user, setUser] = useState();
+  const [user, setUser] = useState();
+  const [products, setProducts] = useState();
+  const { totalPrice } = useShoppingCart();
+  const navigate = useNavigate();
 
-  /* const fetchSale = async (payload) => {
+  const fetchSale = async (payload) => {
     try {
       const endpoint = '/sales';
       const sale = await createSale(endpoint, payload);
@@ -19,17 +25,20 @@ function DeliveryAddress() {
     }
   };
 
-  const handleClick = () => {
-    const { id } = user;
+  const handleClick = async () => {
+    const { id, token } = user;
     const salePayload = {
       userId: id,
       sellerId: orderSeller,
       deliveryAddress: address,
-      deliveryNumber: numberAnddress,
+      deliveryNumber: numberAddress,
       totalPrice,
+      productsArray: products,
     };
-    const saleId = fetchSale(salePayload);
-  }; */
+    setToken(token);
+    const saleId = await fetchSale(salePayload);
+    navigate(`/customer/orders/${saleId}`);
+  };
 
   const fetchUsers = async () => {
     try {
@@ -42,9 +51,15 @@ function DeliveryAddress() {
     }
   };
 
+  const getCartProducts = () => {
+    const allProducts = JSON.parse(localStorage.getItem('carrinho'));
+    setProducts(allProducts.map(({ id, amount }) => ({ id, quantity: amount })));
+  };
+
   useEffect(() => {
-    // setUser(JSON.parse(localStorage.getItem('user')));
+    setUser(JSON.parse(localStorage.getItem('user')));
     fetchUsers();
+    getCartProducts();
   }, []);
 
   return (
@@ -86,7 +101,7 @@ function DeliveryAddress() {
             Número
             <input
               type="text"
-              value={ numberAnddress }
+              value={ numberAddress }
               onChange={ (e) => setNumberAddress(e.target.value) }
               data-testid="customer_checkout__input-addressNumber"
             />
@@ -103,9 +118,5 @@ function DeliveryAddress() {
     </div>
   );
 }
-
-/* DeliveryAddress.propTypes = {
-  totalPrice: PropTypes.string.isRequired,
-}; */
 
 export default DeliveryAddress;
