@@ -5,6 +5,8 @@ import Register from './pages/Register';
 import SellerOrders from './pages/SellerOrders';
 import Checkout from './pages/Checkout';
 import Products from './pages/Products';
+import CustomerOrders from './pages/CustomerOrders';
+import CustomerOrderDetails from './pages/CustomerOrderDetails';
 
 function App() {
   return (
@@ -12,11 +14,15 @@ function App() {
       <Route path="/" element={ <Navigate to="/login" /> } />
       <Route path="/login" element={ <Login /> } />
       <Route path="/register" element={ <Register /> } />
-      <Route path="/seller/orders" element={ <SellerOrders /> } />
       <Route path="/customer/checkout" element={ <Checkout /> } />
       <Route path="/customer/products" element={ <Products /> } />
+      <Route path="/customer/orders/:id" element={ <CustomerOrderDetails /> } />
+      <Route path="/customer/orders" element={ <CustomerOrders /> } />
+      <Route path="/seller/orders" element={ <SellerOrders /> } />
     </Routes>
   );
 }
 
 export default App;
+
+// http://localhost:3000/customer/orders/7

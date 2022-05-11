@@ -22,11 +22,13 @@ export default function Header() {
       <Nav>
         <div>
           <DivL
+            onClick={ () => navigate('/customer/products') }
             data-testid="customer_products__element-navbar-link-products"
           >
             PRODUTOS
           </DivL>
           <DivL
+            onClick={ () => navigate('/customer/orders') }
             data-testid="customer_products__element-navbar-link-orders"
           >
             MEUS PEDIDOS
