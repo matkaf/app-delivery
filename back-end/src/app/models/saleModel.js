@@ -6,18 +6,7 @@ const saleModel = {
     return newSale;
   },
   getAll: async () => {
-    const allSales = await sales.findAll({
-      where: { id: 6 },
-      include: [{
-        model: users,
-        as: 'sellers',
-        attributes: ['id', 'name'],
-      }, {
-        model: products,
-        as: 'products',
-        attributes: ['id', 'name', 'price'],
-      }],
-    });
+    const allSales = await sales.findAll();
     return allSales;
   },
   getOrderById: async (id) => {
