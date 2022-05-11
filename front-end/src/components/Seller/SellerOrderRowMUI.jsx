@@ -32,6 +32,7 @@ const Item = mui.styled(mui.Paper)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-around',
+  cursor: 'pointer',
 }));
 
 const ItemStatus = mui.styled(Item)(({ status }) => ({
