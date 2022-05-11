@@ -4,6 +4,7 @@ import * as mui from '@mui/material';
 import SellerOrderRowMUI from './SellerOrderRowMUI';
 
 import { fetchSalesBySellerId } from '../../services/request';
+import Loading from '../Loading/Loading';
 
 //
 
@@ -23,21 +24,7 @@ function SellerOrdersTableMUI() {
     setLoading(false);
   }, []);
 
-  if (loading) {
-    return (
-      <mui.Container
-        sx={ {
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '100vh',
-          width: '100vw',
-        } }
-      >
-        <mui.CircularProgress color="success" />
-      </mui.Container>
-    );
-  }
+  if (loading) return <Loading />
 
   return (
     <mui.Container
