@@ -102,7 +102,7 @@ function OrderDetailTable() {
           <Div
             data-testid="customer_checkout__element-order-total-price"
           >
-            { convertToBRL(totalPrice).replace('.', ',')}
+            { convertToBRL(Number(totalPrice)) }
           </Div>
         </tr>
       </Table>
