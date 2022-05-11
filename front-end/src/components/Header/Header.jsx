@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { DivL, DivR, Nav } from './styledHeader';
+import { StyledHeader, LeftSection, RightSection } from './styledHeader';
 
 export default function Header() {
   const navigate = useNavigate();
@@ -18,34 +18,33 @@ export default function Header() {
   }, []);
 
   return (
-    <header>
-      <Nav>
-        <div>
-          <DivL
-            data-testid="customer_products__element-navbar-link-products"
-          >
-            PRODUTOS
-          </DivL>
-          <DivL
-            data-testid="customer_products__element-navbar-link-orders"
-          >
-            MEUS PEDIDOS
-          </DivL>
+    <StyledHeader>
+      <LeftSection>
+        <div
+          data-testid="customer_products__element-navbar-link-products"
+        >
+          PRODUTOS
         </div>
-        <div>
-          <DivR
-            data-testid="customer_products__element-navbar-user-full-name"
-          >
-            {userName}
-          </DivR>
-          <DivR
-            onClick={ () => handleLogout() }
-            data-testid="customer_products__element-navbar-link-logout"
-          >
-            Sair
-          </DivR>
+        <div
+          data-testid="customer_products__element-navbar-link-orders"
+        >
+          MEUS PEDIDOS
         </div>
-      </Nav>
-    </header>
+      </LeftSection>
+      <RightSection>
+        <div
+          data-testid="customer_products__element-navbar-user-full-name"
+        >
+          {userName}
+        </div>
+        <button
+          type="button"
+          onClick={ () => handleLogout() }
+          data-testid="customer_products__element-navbar-link-logout"
+        >
+          Sair
+        </button>
+      </RightSection>
+    </StyledHeader>
   );
 }

@@ -1,30 +1,24 @@
 import styled from 'styled-components';
 
-const Nav = styled.header`
-  background-color: #046c54;
+const StyledHeader = styled.header`
+  background-color: #036B52;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 6.7rem;
-
-  div{
-    display: flex;
-    align-items: center;
-    font-size: 1.5rem;
-    color: white;
-  }
+  min-height: 20%;
 `;
 
-const DivL = styled.div`
-  height: 6.7rem;
-  width: 15rem;
+const LeftSection = styled.section`
+  /* height: 6.7rem; */
+  /* width: 15rem; */
   display: flex;
   justify-content: center;
 `;
 
-const DivR = styled.div`
-  height: 6.7rem;
-  width: 15rem;
+const RightSection = styled.div`
+  /* height: 6.7rem; */
+  /* width: 15rem; */
   display: flex;
   justify-content: center;
 
@@ -36,4 +30,8 @@ const DivR = styled.div`
   }
 `;
 
-export { Nav, DivL, DivR };
+export {
+  StyledHeader,
+  LeftSection,
+  RightSection,
+};
