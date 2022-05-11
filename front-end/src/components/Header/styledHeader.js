@@ -15,18 +15,20 @@ const Nav = styled.header`
   }
 `;
 
-const DivL = styled.div`
+const DivL = styled.button`
   height: 6.7rem;
   width: 15rem;
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
 
-const DivR = styled.div`
+const DivR = styled.button`
   height: 6.7rem;
   width: 15rem;
   display: flex;
   justify-content: center;
+  align-items: center;
 
   :nth-child(1) {
     background: #421981;

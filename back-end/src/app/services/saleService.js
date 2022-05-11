@@ -9,6 +9,10 @@ const saleService = {
     const allSales = await saleModel.getAll();
     return allSales;
   },
+  getOrderById: async (id) => {
+    const orderId = await saleModel.getOrderById(id);
+    return orderId;
+  },
   getById: async (id) => {
     const saleId = await saleModel.getById(id);
     return saleId;

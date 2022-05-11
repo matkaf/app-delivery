@@ -2,6 +2,7 @@ const sale = require('express').Router();
 const { verifyJWT } = require('../../app/auth/generatorJwt');
 const saleController = require('../../app/controllers/saleController');
 
+sale.get('/order/:id', saleController.getOrderById);
 sale.delete('/:id', saleController.deleteById);
 sale.put('/:id', saleController.update);
 sale.get('/:id', saleController.getById);

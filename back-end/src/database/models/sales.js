@@ -51,21 +51,11 @@ module.exports = (sequelize, DataTypes) => {
       as: 'users',
       foreignKey: 'userId',
     });
-  };
-
-  Sale.associate = (models) => {
     Sale.belongsTo(models.users, {
       as: 'sellers',
       foreignKey: 'sellerId',
     });
   };
-
-  // Sale.associate = (models) => {
-  //   Sale.hasMany(models.salesProducts, {
-  //     foreignKey: 'saleId',
-  //     as: 'sales'
-  //   });
-  // };
 
   return Sale;
 };

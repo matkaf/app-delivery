@@ -25,6 +25,11 @@ const saleController = {
     const allSales = await saleService.getAll();
     return res.status(StatusCodes.OK).json(allSales);
   },
+  getOrderById: async (req, res) => {
+    const { id } = req.params;
+    const orderId = await saleService.getOrderById(id);
+    return res.status(StatusCodes.OK).json(orderId);
+  },
   getById: async (req, res) => {
     const { id } = req.params;
     const saleId = await saleService.getById(id);

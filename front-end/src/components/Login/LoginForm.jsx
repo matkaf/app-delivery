@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Container, Label, MainDiv, P, ButtonCreateAcount } from './styledLogin';
 import { requestLogin } from '../../services/request';
@@ -14,7 +14,7 @@ function LoginForm() {
     navigate('/register');
   };
 
-  const userNavigation = (role) => {
+  const userNavigation = useCallback((role) => {
     switch (role) {
     case 'customer':
       navigate('/customer/products');
@@ -28,7 +28,7 @@ function LoginForm() {
     default:
       navigate('/');
     }
-  };
+  }, [navigate]);
 
   const login = async () => {
     try {
@@ -45,6 +45,15 @@ function LoginForm() {
 
   const isValidEmail = email.match(/\S+@\S+\.\S+/);
   const minLength = 6;
+
+  useEffect(() => {
+    const { user } = localStorage;
+
+    if (user) {
+      const { role } = JSON.parse(user);
+      userNavigation(role);
+    }
+  }, [userNavigation]);
 
   return (
     <MainDiv>
