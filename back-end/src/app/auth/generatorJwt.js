@@ -22,4 +22,14 @@ const verifyJWT = async (req, res, next) => {
   next();
 };
 
-module.exports = { generatorJwt, verifyJWT };
+const verifyRoleToken = async (req, res, next) => {
+  const { authorization } = req.headers;
+  const { data } = jwt.decode(authorization, SECRET);
+  console.log(data);
+  if (data.role !== 'administrator') {
+    return res.status(StatusCodes.UNAUTHORIZED);
+  }
+  next();
+};
+
+module.exports = { generatorJwt, verifyJWT, verifyRoleToken };
