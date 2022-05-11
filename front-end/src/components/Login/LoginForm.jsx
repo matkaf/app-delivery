@@ -22,7 +22,7 @@ function LoginForm() {
     case 'seller':
       navigate('/seller/orders');
       break;
-    case 'admin':
+    case 'administrator':
       navigate('/admin/manage');
       break;
     default:
