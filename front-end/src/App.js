@@ -5,6 +5,7 @@ import Register from './pages/Register';
 import SellerOrders from './pages/SellerOrders';
 import Checkout from './pages/Checkout';
 import Products from './pages/Products';
+import Admin from './pages/Admin';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/seller/orders" element={ <SellerOrders /> } />
       <Route path="/customer/checkout" element={ <Checkout /> } />
       <Route path="/customer/products" element={ <Products /> } />
+      <Route path="/admin/manage" element={ <Admin /> } />
     </Routes>
   );
 }
