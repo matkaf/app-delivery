@@ -2,27 +2,14 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Form, Input, Label, P, Image } from './styledRegister';
 import logo from '../../logo.png';
-
+import validateData from '../../utils/validateRegister';
 import { createUser } from '../../services/request';
-
-function validateData(name, email, password) {
-  const nameLength = 12;
-  const passLength = 6;
-
-  if (name.length < nameLength) return true;
-
-  if (!email.match(/\S+@\S+\.\S+/)) return true;
-
-  if (password.length < passLength) return true;
-
-  return false;
-}
 
 function RegisterForm() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(true);
+  const [error, setError] = useState(false);
 
   const navigate = useNavigate();
 
@@ -33,7 +20,7 @@ function RegisterForm() {
 
     console.log('Resposta API:', userCreated);
 
-    if (!userCreated) return setError(false);
+    if (!userCreated) return setError(true);
 
     navigate('/customer/products');
   }
@@ -74,7 +61,7 @@ function RegisterForm() {
       </Label>
 
       <P
-        hidden={ error }
+        hidden={ !error }
         data-testid="common_register__element-invalid_register"
       >
         Usuário já cadastrado
