@@ -39,18 +39,9 @@ export const fetchSalesBySellerId = async (endpoint) => {
   }
 };
 
-export const getSalesById = async (endpoint) => {
-  try {
-    const { data } = await api.get(endpoint);
-
-    return data;
-  } catch (error) {
-    return { error: error.message };
-  }
-};
-
 export const createSale = async (endpoint, body) => {
   const { data } = await api.post(endpoint, body);
   return data;
 };
+
 export const getDrinks = async (endpoint) => api.get(endpoint);
