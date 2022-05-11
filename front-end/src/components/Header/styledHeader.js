@@ -1,24 +1,30 @@
 import styled from 'styled-components';
 
-const StyledHeader = styled.header`
-  background-color: #036B52;
+const Nav = styled.header`
+  background-color: #046c54;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  min-height: 20%;
+  height: 6.7rem;
+
+  div{
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    color: white;
+  }
 `;
 
-const LeftSection = styled.section`
-  /* height: 6.7rem; */
-  /* width: 15rem; */
+const DivL = styled.div`
+  height: 6.7rem;
+  width: 15rem;
   display: flex;
   justify-content: center;
 `;
 
-const RightSection = styled.div`
-  /* height: 6.7rem; */
-  /* width: 15rem; */
+const DivR = styled.div`
+  height: 6.7rem;
+  width: 15rem;
   display: flex;
   justify-content: center;
 
@@ -30,8 +36,4 @@ const RightSection = styled.div`
   }
 `;
 
-export {
-  StyledHeader,
-  LeftSection,
-  RightSection,
-};
+export { Nav, DivL, DivR };
