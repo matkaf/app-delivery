@@ -9,6 +9,7 @@ import { Table,
   TdSubTotal,
   Button,
   Div } from './styledOrderDetailTable';
+import convertToBRL from '../../helpers';
 
 const tableHeaderNames = ['Item',
   'Descrição', ' Quantidade', 'Valor Unitário', 'Sub-total', 'Remover Item'];
@@ -22,9 +23,6 @@ function OrderDetailTable() {
     setProducts(newProducts);
     localStorage.setItem('carrinho', JSON.stringify(newProducts));
   };
-
-  const convertToBRL = (value) => value.toLocaleString('pt-br',
-    { style: 'currency', currency: 'BRL' });
 
   useEffect(() => {
     const exists = localStorage.getItem('carrinho');
@@ -102,7 +100,7 @@ function OrderDetailTable() {
           <Div
             data-testid="customer_checkout__element-order-total-price"
           >
-            { convertToBRL(totalPrice).replace('.', ',')}
+            { convertToBRL(Number(totalPrice)) }
           </Div>
         </tr>
       </Table>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { DivL, DivR, Nav } from './styledHeader';
+import { Nav, DivL, DivR } from './styledHeader';
 
 export default function Header() {
   const navigate = useNavigate();
@@ -22,11 +22,13 @@ export default function Header() {
       <Nav>
         <div>
           <DivL
+            onClick={ () => navigate('/customer/products') }
             data-testid="customer_products__element-navbar-link-products"
           >
             PRODUTOS
           </DivL>
           <DivL
+            onClick={ () => navigate('/customer/orders') }
             data-testid="customer_products__element-navbar-link-orders"
           >
             MEUS PEDIDOS

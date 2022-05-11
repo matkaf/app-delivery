@@ -1,9 +1,13 @@
 import React from 'react';
-import SellerOrdersTableMUI from '../components/Seller/SellerOrdersTableMUI';
+import OrdersTableMUI from '../components/Orders/OrdersTableMUI';
+import Header from '../components/Header/Header';
 
 function SellerOrders() {
   return (
-    <SellerOrdersTableMUI />
+    <>
+      <Header />
+      <OrdersTableMUI />
+    </>
   );
 }
 

@@ -29,7 +29,7 @@ export const createUser = async (endpoint, body) => {
   }
 };
 
-export const getSales = async (endpoint) => {
+export const fetchSalesById = async (endpoint) => {
   try {
     const { data } = await api.get(endpoint);
 
@@ -43,4 +43,5 @@ export const createSale = async (endpoint, body) => {
   const { data } = await api.post(endpoint, body);
   return data;
 };
+
 export const getDrinks = async (endpoint) => api.get(endpoint);
