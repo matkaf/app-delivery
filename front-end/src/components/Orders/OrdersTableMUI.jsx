@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import * as mui from '@mui/material';
 import { useLocation } from 'react-router-dom';
-
 import SellerOrderRowMUI from './OrderRowMUI';
-
 import { fetchSalesById } from '../../services/request';
+import Loading from '../Loading/Loading';
 
 //
 
@@ -27,21 +26,7 @@ function OrdersTableMUI() {
     setLoading(false);
   }, [role]);
 
-  if (loading) {
-    return (
-      <mui.Container
-        sx={ {
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '100vh',
-          width: '100vw',
-        } }
-      >
-        <mui.CircularProgress color="success" />
-      </mui.Container>
-    );
-  }
+  if (loading) return <Loading />;
 
   return (
     <mui.Container
