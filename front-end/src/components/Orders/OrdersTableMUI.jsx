@@ -1,27 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import * as mui from '@mui/material';
+import { useLocation } from 'react-router-dom';
 
-import SellerOrderRowMUI from './SellerOrderRowMUI';
+import SellerOrderRowMUI from './OrderRowMUI';
 
-import { fetchSalesBySellerId } from '../../services/request';
+import { fetchSalesById } from '../../services/request';
 
 //
 
-function SellerOrdersTableMUI() {
+function OrdersTableMUI() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  async function requestSales() {
-    const { id } = JSON.parse(localStorage.user);
-    const data = await fetchSalesBySellerId(`/seller/${id}`);
-
-    setOrders(data);
-  }
+  const { pathname } = useLocation();
+  const role = pathname.split('/')[1];
 
   useEffect(() => {
+    async function requestSales() {
+      const { id } = JSON.parse(localStorage.user);
+      const data = await fetchSalesById(`/${role}/${id}`);
+
+      setOrders(data);
+    }
+
     requestSales();
     setLoading(false);
-  }, []);
+  }, [role]);
 
   if (loading) {
     return (
@@ -50,9 +54,14 @@ function SellerOrdersTableMUI() {
         padding: '30px',
       } }
     >
-      { orders.map((order) => <SellerOrderRowMUI key={ order.id } order={ order } />) }
+      { orders.map((order) => (
+        <SellerOrderRowMUI
+          key={ order.id }
+          order={ order }
+          role={ role }
+        />))}
     </mui.Container>
   );
 }
 
-export default SellerOrdersTableMUI;
+export default OrdersTableMUI;

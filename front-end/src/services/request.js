@@ -29,7 +29,7 @@ export const createUser = async (endpoint, body) => {
   }
 };
 
-export const fetchSalesBySellerId = async (endpoint) => {
+export const fetchSalesById = async (endpoint) => {
   try {
     const { data } = await api.get(endpoint);
 

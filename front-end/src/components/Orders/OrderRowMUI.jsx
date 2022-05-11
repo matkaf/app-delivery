@@ -3,6 +3,7 @@ import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as mui from '@mui/material';
 import moment from 'moment';
+import convertToBRL from '../../helpers';
 
 //
 
@@ -38,7 +39,7 @@ const ItemStatus = mui.styled(Item)(({ status }) => ({
   backgroundColor: colorByStatus(status),
 }));
 
-function SellerOrderRowMUI({ order }) {
+function OrderRowMUI({ order, role }) {
   const { id, status, saleDate, totalPrice, deliveryAddress } = order;
   const navigate = useNavigate();
 
@@ -50,30 +51,37 @@ function SellerOrderRowMUI({ order }) {
       alignItems="space-evenly"
       onClick={ () => navigate(`${id}`) }
     >
-      <Item data-testid={ `seller_orders__element-order-id-${id}` }>
+      <Item data-testid={ `${role}_orders__element-order-id-${id}` }>
         <h4>ID do pedido:</h4>
         <p>{id}</p>
       </Item>
 
       <ItemStatus
-        data-testid={ `seller_orders__element-delivery-status-${id}` }
+        data-testid={ `${role}_orders__element-delivery-status-${id}` }
         status={ status }
       >
         <h4>Status:</h4>
         <p>{status}</p>
       </ItemStatus>
 
-      <Item data-testid={ `seller_orders__element-order-date-${id}` }>
+      <Item data-testid={ `${role}_orders__element-order-date-${id}` }>
         <h4>Data do pedido:</h4>
         <p>{ moment(saleDate).format('DD/MM/YYYY') }</p>
       </Item>
 
-      <Item data-testid={ `seller_orders__element-card-price-id-${id}` }>
+      <Item>
         <h4>Valor total:</h4>
-        <p>{ Number(totalPrice).toFixed(2) }</p>
+        <p
+          data-testid={ `${role}_orders__element-card-price-${id}` }
+        >
+          { convertToBRL(Number(totalPrice))}
+        </p>
       </Item>
 
-      <Item data-testid={ `seller_orders__element-card-address-id-${id}` }>
+      <Item
+        hidden={ role !== 'seller' }
+        data-testid={ `${role}_orders__element-card-address-${id}` }
+      >
         <h4>Endereço:</h4>
         <p>{ deliveryAddress }</p>
       </Item>
@@ -81,7 +89,7 @@ function SellerOrderRowMUI({ order }) {
   );
 }
 
-SellerOrderRowMUI.propTypes = {
+OrderRowMUI.propTypes = {
   order: PropTypes.shape({
     deliveryAddress: PropTypes.string,
     id: PropTypes.number,
@@ -90,6 +98,7 @@ SellerOrderRowMUI.propTypes = {
     deliveryNumber: PropTypes.string,
     totalPrice: PropTypes.string,
   }).isRequired,
+  role: PropTypes.string.isRequired,
 };
 
-export default SellerOrderRowMUI;
+export default OrderRowMUI;

@@ -1,11 +1,12 @@
 import React from 'react';
 import Header from '../components/Header/Header';
+import OrdersTableMUI from '../components/Orders/OrdersTableMUI';
 
 function CustomerOrderDetails() {
   return (
     <>
       <Header />
-      <h2>some other shit</h2>
+      <OrdersTableMUI />
     </>
   );
 }
