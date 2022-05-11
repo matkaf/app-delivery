@@ -3,7 +3,7 @@ import * as mui from '@mui/material';
 
 import SellerOrderRowMUI from './SellerOrderRowMUI';
 
-import { getSalesById } from '../../services/request';
+import { fetchSalesBySellerId } from '../../services/request';
 
 //
 
@@ -13,9 +13,9 @@ function SellerOrdersTableMUI() {
 
   async function requestSales() {
     const { id } = JSON.parse(localStorage.user);
-    const data = await getSalesById(`/sales/${id}`);
-    console.log(data);
-    setOrders([data]); // TODO: alterar
+    const data = await fetchSalesBySellerId(`/seller/${id}`);
+
+    setOrders(data);
   }
 
   useEffect(() => {

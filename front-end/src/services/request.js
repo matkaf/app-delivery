@@ -29,6 +29,16 @@ export const createUser = async (endpoint, body) => {
   }
 };
 
+export const fetchSalesBySellerId = async (endpoint) => {
+  try {
+    const { data } = await api.get(endpoint);
+
+    return data;
+  } catch (error) {
+    return { error: error.message };
+  }
+};
+
 export const getSalesById = async (endpoint) => {
   try {
     const { data } = await api.get(endpoint);
