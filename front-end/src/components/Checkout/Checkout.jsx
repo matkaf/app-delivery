@@ -1,6 +1,6 @@
 import React from 'react';
 import DeliveryAddress from '../DeliveryAddress';
-import OrderDetailTable from '../OrderDetailtable';
+import OrderDetailTable from '../OrderDetailTable';
 import Div from './styledCheckout';
 import Header from '../Header/Header';
 
