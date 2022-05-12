@@ -8,13 +8,13 @@ import { Table,
   TdValorUnitario,
   TdSubTotal,
   Button,
-  Div } from './styledOrderDetailTable';
+  Div } from './styledCheckoutTable';
 import convertToBRL from '../../helpers';
 
 const tableHeaderNames = ['Item',
   'Descrição', ' Quantidade', 'Valor Unitário', 'Sub-total', 'Remover Item'];
 
-function OrderDetailTable() {
+function CheckoutTable() {
   const location = useLocation().pathname;
   const { totalPrice, setProducts, products } = useShoppingCart();
 
@@ -42,7 +42,7 @@ function OrderDetailTable() {
         { products.map(({ drinkName, amount, price }, index) => (
           <tr
             data-testid={
-              `customer_checkout__eelement-order-table-name-${index}`
+              `customer_checkout__element-order-table-name-${index}`
             }
             key={ drinkName }
           >
@@ -108,4 +108,4 @@ function OrderDetailTable() {
   );
 }
 
-export default OrderDetailTable;
+export default CheckoutTable;

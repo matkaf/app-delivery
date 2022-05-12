@@ -19,6 +19,7 @@ function OrdersTableMUI() {
       const { id } = JSON.parse(localStorage.user);
       const data = await fetchSalesById(`/${role}/${id}`);
 
+      console.log('data:', data);
       setOrders(data);
     }
 
