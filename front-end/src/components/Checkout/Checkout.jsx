@@ -1,6 +1,6 @@
 import React from 'react';
 import DeliveryAddress from '../DeliveryAddress';
-import OrderDetailTable from '../OrderDetailTable';
+import CheckoutTable from '../CheckoutTable';
 import Div from './styledCheckout';
 import Header from '../Header/Header';
 
@@ -9,7 +9,7 @@ function Checkout() {
     <div>
       <Header />
       <Div>
-        <OrderDetailTable />
+        <CheckoutTable />
         <DeliveryAddress />
       </Div>
     </div>
