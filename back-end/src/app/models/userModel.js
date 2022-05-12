@@ -2,8 +2,8 @@ const { Op } = require('sequelize');
 const { users } = require('../../database/models');
 
 const userModel = {
-  create: async ({ name, email, password }) => {
-    const newUser = await users.create({ name, email, password });
+  create: async (userPayload) => {
+    const newUser = await users.create({ ...userPayload });
     return newUser;
   },
   getAll: async () => {
