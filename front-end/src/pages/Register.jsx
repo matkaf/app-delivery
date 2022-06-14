@@ -3,9 +3,7 @@ import RegisterForm from '../components/Register/RegisterForm';
 
 function Register() {
   return (
-    <div>
-      <RegisterForm />
-    </div>
+    <RegisterForm />
   );
 }
 

@@ -1,56 +1,82 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const enableButton = keyframes`
+  0% {
+    background-color: gray;
+  }
+  50% {
+    background-color: #476b62
+  }
+  100% {
+    background-color: #046c54;
+  }
+`;
+
+const disableButton = keyframes`
+  0% {
+    background-color: #046c54;
+  }
+  50% {
+    background-color: #476b62
+  }
+  100% {
+    background-color: gray;
+  }
+`;
 
 export const Form = styled.form`
-  width:400px;
-  height:700px;
-  border-radius: 5px;
+  width:100vw;
+  height:100vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  margin:0;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  margin-right: -50%;
-  top: 50%;
-  left: 50%;
 `;
 
 export const Label = styled.label`
   display:flex;
   flex-direction:column;
+  width: 25rem;
 `;
 
-export const Input = styled.input.attrs(props => ({
+export const Input = styled.input.attrs((props) => ({
   type: props.type || 'text',
   placeholder: props.placeholder || '',
 }))`
-  width:370px;
-  height:59px;
-  margin-top: 10px;
-  padding-left:5px;
+  border: 0.1rem solid gray;
+  border-radius: 0.5rem;
+  margin: 0.8rem 0;
+  height: 3rem;
+  padding-left:0.8rem;
 `;
 
 export const Button = styled.button`
   background-color:#046c54;
+  border-radius: 0.5rem;
   color:white;
-  width:370px;
-  height:59px;
-  margin-top:20px;
+  width: 25rem;
+  height: 3rem;
+  margin-top: 0.8rem;
+
+  &:enabled {
+    animation: ${enableButton} 1s linear;
+    cursor: pointer;
+  }
 
   &:disabled {
-    background-color: grey;
+    animation: ${disableButton} 1s linear;
+    background-color: gray;
   }
 `;
 
 export const P = styled.p`
   text-align:center;
-  font-size: 15px;
+  font-size: 1rem;
   color:red;
-  padding:10px;
+  padding:0.8rem;
 `;
 
 export const Image = styled.img`
-  width:200px;
+  width: 12rem;
   border-radius:50%;
 `;
