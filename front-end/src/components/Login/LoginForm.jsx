@@ -8,11 +8,11 @@ function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [failedLogin, setFailedLogin] = useState(false);
-  const navigate = useNavigate();
 
-  const register = async () => {
-    navigate('/register');
-  };
+  const isValidEmail = email.match(/\S+@\S+\.\S+/);
+  const minLength = 6;
+
+  const navigate = useNavigate();
 
   const userNavigation = useCallback((role) => {
     switch (role) {
@@ -30,10 +30,9 @@ function LoginForm() {
     }
   }, [navigate]);
 
-  const login = async () => {
+  const handleLogin = async () => {
     try {
       const user = await requestLogin('/login', { email, password });
-      console.log(user);
       if (user.token) {
         localStorage.setItem('user', JSON.stringify(user));
         userNavigation(user.role);
@@ -42,9 +41,6 @@ function LoginForm() {
       setFailedLogin(true);
     }
   };
-
-  const isValidEmail = email.match(/\S+@\S+\.\S+/);
-  const minLength = 6;
 
   useEffect(() => {
     const { user } = localStorage;
@@ -94,7 +90,7 @@ function LoginForm() {
           type="button"
           className="btnLogin"
           data-testid="common_login__button-login"
-          onClick={ login }
+          onClick={ handleLogin }
           disabled={ !(password.length >= minLength && isValidEmail) }
         >
           Entrar
@@ -103,7 +99,7 @@ function LoginForm() {
           type="button"
           className="btnLogin"
           data-testid="common_login__button-register"
-          onClick={ register }
+          onClick={ () => navigate('/register') }
         >
           Ainda não tenho conta
         </ButtonCreateAcount>
