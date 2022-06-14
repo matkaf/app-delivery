@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Form, Input, Label, P, Image } from './styledRegister';
 import logo from '../../logo.png';
-import validateData from '../../utils/validateRegister';
+import isDataInvalid from '../../utils/validateRegister';
 import { createUser } from '../../services/request';
 
 function RegisterForm() {
@@ -14,15 +14,13 @@ function RegisterForm() {
   const navigate = useNavigate();
 
   async function handleSubmit() {
-    const body = { name, email, password, role: 'user' };
+    const body = { name, email, password };
 
     const userCreated = await createUser('/users', body);
 
-    console.log('Resposta API:', userCreated);
-
     if (!userCreated) return setError(true);
 
-    navigate('/customer/products');
+    navigate('/login');
   }
 
   return (
@@ -34,7 +32,7 @@ function RegisterForm() {
         Nome:
         <Input
           id="name"
-          data-testid="common_register__input-name"
+          placeholder="O nome deve conter pelo menos 12 caracteres"
           value={ name }
           onChange={ ({ target: { value } }) => setName(value) }
         />
@@ -44,7 +42,8 @@ function RegisterForm() {
         Email:
         <Input
           id="email"
-          data-testid="common_register__input-email"
+          type="email"
+          placeholder="Digite um e-mail válido"
           value={ email }
           onChange={ ({ target: { value } }) => setEmail(value) }
         />
@@ -54,7 +53,8 @@ function RegisterForm() {
         Senha:
         <Input
           id="password"
-          data-testid="common_register__input-password"
+          type="password"
+          placeholder="A senha deve conter pelo menos 6 caracteres"
           value={ password }
           onChange={ ({ target: { value } }) => setPassword(value) }
         />
@@ -62,18 +62,14 @@ function RegisterForm() {
 
       <P
         hidden={ !error }
-        data-testid="common_register__element-invalid_register"
       >
         Usuário já cadastrado
       </P>
 
       <Button
         type="button"
-        data-testid="common_register__button-register"
-        disabled={ validateData(name, email, password) }
-        onClick={ async () => {
-          await handleSubmit();
-        } }
+        disabled={ isDataInvalid(name, email, password) }
+        onClick={ async () => handleSubmit() }
       >
         CADASTRAR
       </Button>

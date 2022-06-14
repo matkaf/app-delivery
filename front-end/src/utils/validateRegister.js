@@ -1,14 +1,14 @@
-function validateData(name, email, password) {
-  const nameLength = 12;
-  const passLength = 6;
+function isDataInvalid(name, email, password) {
+  const minNameLength = 12;
+  const minPassLength = 6;
 
-  if (name.length < nameLength) return true;
+  if (name.length < minNameLength) return true;
 
   if (!email.match(/\S+@\S+\.\S+/)) return true;
 
-  if (password.length < passLength) return true;
+  if (password.length < minPassLength) return true;
 
   return false;
 }
 
-export default validateData;
+export default isDataInvalid;

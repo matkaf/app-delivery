@@ -21,7 +21,10 @@ export const Label = styled.label`
   flex-direction:column;
 `;
 
-export const Input = styled.input`
+export const Input = styled.input.attrs(props => ({
+  type: props.type || 'text',
+  placeholder: props.placeholder || '',
+}))`
   width:370px;
   height:59px;
   margin-top: 10px;

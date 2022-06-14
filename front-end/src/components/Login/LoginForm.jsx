@@ -63,7 +63,6 @@ function LoginForm() {
               id="email"
               onChange={ (e) => setEmail(e.target.value) }
               value={ email }
-              data-testid="common_login__input-email"
             />
           </Label>
         </div>
@@ -75,13 +74,11 @@ function LoginForm() {
               id="password"
               onChange={ (e) => setPassword(e.target.value) }
               value={ password }
-              data-testid="common_login__input-password"
             />
           </Label>
         </div>
         <P
           loginIsFailed={ failedLogin }
-          data-testid="common_login__element-invalid-email"
         >
           E-mail ou senha estão incorretos
         </P>
@@ -89,7 +86,6 @@ function LoginForm() {
         <Button
           type="button"
           className="btnLogin"
-          data-testid="common_login__button-login"
           onClick={ handleLogin }
           disabled={ !(password.length >= minLength && isValidEmail) }
         >
@@ -98,7 +94,6 @@ function LoginForm() {
         <ButtonCreateAcount
           type="button"
           className="btnLogin"
-          data-testid="common_login__button-register"
           onClick={ () => navigate('/register') }
         >
           Ainda não tenho conta
