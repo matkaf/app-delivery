@@ -8,11 +8,11 @@ import { ShoppingCartProvider } from './hooks/useTotalPrice';
 
 ReactDOM.render(
   <React.StrictMode>
+    <GlobalStyle/>
     <BrowserRouter>
       <ShoppingCartProvider>
         <App />
       </ShoppingCartProvider>
-      <GlobalStyle/>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root'),

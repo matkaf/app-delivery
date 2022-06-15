@@ -25,11 +25,10 @@ const disableButton = keyframes`
 `;
 
 export const Form = styled.form`
-  width:100vw;
   height:100vh;
   display:flex;
-  align-items:center;
   flex-direction:column;
+  align-items:center;
   justify-content:center;
   gap: 0.8rem;
 `;
@@ -68,7 +67,7 @@ export const P = styled.p`
 `;
 
 export const Image = styled.img`
-  width: 12rem;
+  width: 10rem;
   border-radius:50%;
   margin-bottom: 0.8rem;
 `;
