@@ -28,9 +28,10 @@ export const Form = styled.form`
   width:100vw;
   height:100vh;
   display:flex;
+  align-items:center;
   flex-direction:column;
   justify-content:center;
-  align-items:center;
+  gap: 0.8rem;
 `;
 
 export const Label = styled.label`
@@ -39,19 +40,7 @@ export const Label = styled.label`
   width: 25rem;
 `;
 
-export const Input = styled.input.attrs((props) => ({
-  type: props.type || 'text',
-  placeholder: props.placeholder || '',
-}))`
-  border: 0.1rem solid gray;
-  border-radius: 0.5rem;
-  margin: 0.8rem 0;
-  height: 3rem;
-  padding-left:0.8rem;
-`;
-
 export const Button = styled.button`
-  background-color:#046c54;
   border-radius: 0.5rem;
   color:white;
   width: 25rem;
@@ -60,6 +49,7 @@ export const Button = styled.button`
 
   &:enabled {
     animation: ${enableButton} 1s linear;
+    background-color:#046c54;
     cursor: pointer;
   }
 
@@ -74,9 +64,21 @@ export const P = styled.p`
   font-size: 1rem;
   color:red;
   padding:0.8rem;
+  visibility: ${(props) => (props.error ? 'visible' : 'hidden')};
 `;
 
 export const Image = styled.img`
   width: 12rem;
   border-radius:50%;
+  margin-bottom: 0.8rem;
+`;
+
+export const Input = styled.input.attrs((props) => ({
+  type: props.type || 'text',
+  placeholder: props.placeholder || '',
+}))`
+  border: 0.1rem solid gray;
+  border-radius: 0.5rem;
+  height: 3rem;
+  padding-left:0.8rem;
 `;

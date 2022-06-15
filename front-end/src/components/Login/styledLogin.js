@@ -1,71 +1,96 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
-const Button = styled.button`
-  background-color:#046c54;
+const enableButton = keyframes`
+  0% {
+    background-color: gray;
+  }
+  50% {
+    background-color: #476b62
+  }
+  100% {
+    background-color: #046c54;
+  }
+`;
+
+const disableButton = keyframes`
+  0% {
+    background-color: #046c54;
+  }
+  50% {
+    background-color: #476b62
+  }
+  100% {
+    background-color: gray;
+  }
+`;
+
+export const Image = styled.img`
+  width: 12rem;
+  border-radius:50%;
+`;
+
+export const Button = styled.button`
+  border-radius: 0.5rem;
   color:white;
-  width:370px;
-  height:59px;
-  margin-top:20px;
-  cursor: pointer;
+  width: 25rem;
+  height: 3rem;
+  margin-top: 0.8rem;
+
+  &:enabled {
+    animation: ${enableButton} 1s linear;
+    background-color:#046c54;
+    cursor: pointer;
+  }
 
   &:disabled {
-    background-color: grey;
+    animation: ${disableButton} 1s linear;
+    background-color: gray;
   }
 `;
 
-const ButtonCreateAcount = styled.button`
+export const RegisterButton = styled.button`
+  width: 25rem;
+  height: 3rem;
+  background-color: transparent;
   border: 2px solid #046c54;
-  color: #046c54;
+  border-radius: 0.5rem;
+  color: black;
   cursor: pointer;
-  width:370px;
-  height:59px;
-  margin-top:20px;
+
+  &:enabled {
+    background-color: transparent;
+  }
+;
 `;
 
-const MainDiv = styled.div`
-  height: 100vh;
-  width: 100%;
-  background-color:rgb(250, 250, 250);
-`;
-
-const Container = styled.form`
-  width:400px;
-  height:700px;
-  border-radius: 5px;
+export const Form = styled.form`
+  width:100vw;
+  height:100vh;
   display:flex;
+  align-items:center;
   flex-direction:column;
   justify-content:center;
-  align-items:center;
-  margin:0;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  margin-right: -50%;
-  top: 50%;
-  left: 50%;
-
-    img {
-      width:200px;
-      border-radius:50%;
-    }
+  gap: 0.8rem
 `;
-const Label = styled.label`
+
+export const Label = styled.label`
   display:flex;
   flex-direction:column;
-
-  input {
-    width:370px;
-    height:59px;
-    margin-top: 10px;
-    padding-left:5px
-  }
+  width: 25rem;
 `;
 
-const P = styled.p`
-  text-align:center;
-  font-size: 15px;
-  color:red;
-  padding:10px;
+export const P = styled.p`
+  text-align: center;
+  color: red;
   visibility: ${(props) => (props.loginIsFailed ? 'visible' : 'hidden')};
 `;
 
-export { Button, MainDiv, Container, Label, P, ButtonCreateAcount };
+export const Input = styled.input.attrs((props) => ({
+  type: props.type || 'text',
+  placeholder: props.placeholder || '',
+}))`
+  border: 0.1rem solid gray;
+  border-radius: 0.5rem;
+  height: 3rem;
+  padding-left:0.8rem;
+`;

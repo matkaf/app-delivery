@@ -26,7 +26,6 @@ function RegisterForm() {
   return (
     <Form>
       <Image src={ logo } alt="logo" />
-      <br />
       <h2>Cadastro</h2>
       <Label htmlFor="name">
         Nome:
@@ -60,12 +59,6 @@ function RegisterForm() {
         />
       </Label>
 
-      <P
-        hidden={ !error }
-      >
-        Usuário já cadastrado
-      </P>
-
       <Button
         type="button"
         disabled={ isDataInvalid(name, email, password) }
@@ -73,6 +66,12 @@ function RegisterForm() {
       >
         CADASTRAR
       </Button>
+
+      <P
+        error={ error }
+      >
+        Usuário já cadastrado
+      </P>
     </Form>
   );
 }

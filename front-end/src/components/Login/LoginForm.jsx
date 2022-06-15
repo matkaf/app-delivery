@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Container, Label, MainDiv, P, ButtonCreateAcount } from './styledLogin';
+import { Input, Image, Button, Form, Label,
+  P, RegisterButton } from './styledLogin';
 import { requestLogin } from '../../services/request';
 import Logo from '../../logo.png';
 
@@ -52,54 +53,47 @@ function LoginForm() {
   }, [userNavigation]);
 
   return (
-    <MainDiv>
-      <Container>
-        <img src={ Logo } alt="logo" />
-        <div>
-          <Label htmlFor="email">
-            Email
-            <input
-              type="email"
-              id="email"
-              onChange={ (e) => setEmail(e.target.value) }
-              value={ email }
-            />
-          </Label>
-        </div>
-        <div>
-          <Label htmlFor="password">
-            Password
-            <input
-              type="password"
-              id="password"
-              onChange={ (e) => setPassword(e.target.value) }
-              value={ password }
-            />
-          </Label>
-        </div>
-        <P
-          loginIsFailed={ failedLogin }
-        >
-          E-mail ou senha estão incorretos
-        </P>
+    <Form>
+      <Image src={ Logo } alt="logo" />
+      <Label htmlFor="email">
+        E-mail
+        <Input
+          type="email"
+          id="email"
+          value={ email }
+          onChange={ (e) => setEmail(e.target.value) }
+        />
+      </Label>
+      <Label htmlFor="password">
+        Senha
+        <Input
+          type="password"
+          id="password"
+          value={ password }
+          onChange={ (e) => setPassword(e.target.value) }
+        />
+      </Label>
 
-        <Button
-          type="button"
-          className="btnLogin"
-          onClick={ handleLogin }
-          disabled={ !(password.length >= minLength && isValidEmail) }
-        >
-          Entrar
-        </Button>
-        <ButtonCreateAcount
-          type="button"
-          className="btnLogin"
-          onClick={ () => navigate('/register') }
-        >
-          Ainda não tenho conta
-        </ButtonCreateAcount>
-      </Container>
-    </MainDiv>
+      <Button
+        type="button"
+        className="btnLogin"
+        onClick={ handleLogin }
+        disabled={ !(password.length >= minLength && isValidEmail) }
+      >
+        Entrar
+      </Button>
+
+      <RegisterButton
+        onClick={ () => navigate('/register') }
+      >
+        Ainda não tenho conta
+      </RegisterButton>
+      <P
+        loginIsFailed={ failedLogin }
+      >
+        E-mail ou senha incorretos
+      </P>
+    </Form>
   );
 }
 

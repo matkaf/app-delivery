@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
-import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import GlobalStyle from './globalStyle'
@@ -10,10 +9,10 @@ import { ShoppingCartProvider } from './hooks/useTotalPrice';
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-    <ShoppingCartProvider>
-    <App />
-    </ShoppingCartProvider>
-    <GlobalStyle/>
+      <ShoppingCartProvider>
+        <App />
+      </ShoppingCartProvider>
+      <GlobalStyle/>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root'),
