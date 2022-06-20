@@ -30,8 +30,9 @@ export default function Header() {
           )}
         <OrdersA
           role={ userRole }
+          onClick={ () => navigate(`/${userRole}/orders`) }
         >
-          Meus Pedidos
+          {userRole === 'customer' ? 'Meus Pedidos' : 'Pedidos'}
         </OrdersA>
       </Nav>
       <Div>
