@@ -27,28 +27,26 @@ A aplicação necessita do login de usuário para ser utilizada e esse login pod
 
 ## Fluxo de cliente
 
-  #### Tela de Produtos
-
-  **Na URL `customer/products` o cliente pode:**
+  #### Na URL `customer/products` o cliente pode:
 
   - [x] Visualizar a lista de bebidas disponíveis
   - [x] Adicionar itens ao carrinho
   - [x] Visualizar o valor total dos itens adicionados ao carrinho
 
-  **Na URL `customer/checkout` o cliente pode:**
+  #### Na URL `customer/checkout` o cliente pode:
 
   - [x] Ver o resumo dos itens no carrinho
   - [x] Ver o preço de cada item e o preço total
   - [x] Remover itens do carrinho
   - [x] Finalizar o pedido
 
-**Na URL `customer/orders/` o cliente pode:**
+  #### Na URL `customer/orders/` o cliente pode:
 
   - [x] Visualizar seus pedidos
 
   - [x] Ver o status de cada um deles
 
-**Na URL `customer/orders/:id` o cliente pode:**
+  #### Na URL `customer/orders/:id` o cliente pode:
 
   - [x] Visualizar os detalhes de determinado pedido
 
