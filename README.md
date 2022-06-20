@@ -8,6 +8,19 @@ A aplicação necessita do login de usuário para ser utilizada e esse login pod
 
 ![Diagrama ER](./assets/readme/eer.png)
 
+## Como rodar o projeto?
+
+Por padrão, são utilizadas as portas: 3000(front) e 3001(back).
+
+1. Faça o clone do projeto para sua máquina:
+`git clone git@github.com:matkaf/app-delivery.git`
+
+2. Entre na pasta do projeto e instale npm:
+`cd app-delivery && npm install`
+
+3. Inicie a aplicação:
+`npm start`
+
 <details>
 
   <summary>
