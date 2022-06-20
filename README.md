@@ -8,37 +8,47 @@ A aplicação necessita do login de usuário para ser utilizada e esse login pod
 
 ![Diagrama ER](./assets/readme/eer.png)
 
-## Funcionalidades
+## Fluxo Geral
 
-<details>
-	<summary>
-		<strong>Para os clientes</strong>
-	</summary><br>
+  #### Tela de Cadastro
 
 **Uma pessoa pode se registrar como cliente no site enviando:**
 
--  [x] Um nome com mais de 12 caracteres
--  [x] Um e-mail válido
--  [x] Uma senha com mais de 6 caracteres
+  [x] Um nome com mais de 12 caracteres
+  [x] Um e-mail válido
+  [x] Uma senha com mais de 6 caracteres
 
-**Na URL `customer/products` o cliente pode:**
+  #### Tela de login
 
--  [x] Visualizar a lista de bebidas disponíveis
--  [x] Adicionar itens ao carrinho
--  [x] Visualizar o valor total dos itens adicionados ao carrinho
+  [x] Verifica o usuário no banco de dados
+  [x] Verifica email e senha
+  [x] Redireciona para a URL correspondente à função (customer, seller ou admin)
 
-**Na URL `customer/checkout` o cliente pode:**
 
-- [x] Ver o resumo dos itens no carrinho
-- [x] Ver o preço de cada item e o preço total;
-- [x] Remover itens do carrinho;
-- [x] Finalizar o pedido;
+## Fluxo de cliente
+
+  #### Tela de Produtos
+
+  **Na URL `customer/products` o cliente pode:**
+
+  [x] Visualizar a lista de bebidas disponíveis
+  [x] Adicionar itens ao carrinho
+  [x] Visualizar o valor total dos itens adicionados ao carrinho
+
+  **Na URL `customer/checkout` o cliente pode:**
+
+  [x] Ver o resumo dos itens no carrinho
+  [x] Ver o preço de cada item e o preço total;
+  [x] Remover itens do carrinho;
+  [x] Finalizar o pedido;
 
 **Na URL `customer/orders/` o cliente pode:**
-- [x] Visualizar seus pedidos
-- [x] Ver o status de cada um deles
+  [x] Visualizar seus pedidos
+  [x] Ver o status de cada um deles
 
 **Na URL `customer/orders/:id` o cliente pode:**
-- [x] Visualizar os detalhes de determinado pedido
-- [x] Ver seu status
-</details>
+  [x] Visualizar os detalhes de determinado pedido
+  [x] Ver seu status
+
+## Fluxo de Vendedor(a)
+
