@@ -8,49 +8,51 @@ A aplicação necessita do login de usuário para ser utilizada e esse login pod
 
 ![Diagrama ER](./assets/readme/eer.png)
 
-## Fluxo Geral
+<details>
 
-  #### Tela de Cadastro
+  <summary>
 
-**Uma pessoa pode se registrar como cliente no site enviando:**
+  ## Fluxo Geral
+  </summary><br>
 
+  ### Tela de Cadastro:
+  Uma pessoa pode se registrar como cliente no site enviando:
   - [x] Um nome com mais de 12 caracteres
   - [x] Um e-mail válido
   - [x] Uma senha com mais de 6 caracteres
 
-  #### Tela de login
-
+  ### Tela de login:
   - [x] Verifica o usuário no banco de dados
   - [x] Verifica email e senha
   - [x] Redireciona para a URL correspondente à função (customer, seller ou admin)
 
+</details>
 
-## Fluxo de cliente
+<details>
 
-  #### Na URL `customer/products` o cliente pode:
+  <summary>
 
+  ## Fluxo de cliente
+  </summary><br>
+
+  ### Na URL `customer/products` o cliente pode:
   - [x] Visualizar a lista de bebidas disponíveis
   - [x] Adicionar itens ao carrinho
   - [x] Visualizar o valor total dos itens adicionados ao carrinho
 
-  #### Na URL `customer/checkout` o cliente pode:
-
+  ### Na URL `customer/checkout` o cliente pode:
   - [x] Ver o resumo dos itens no carrinho
   - [x] Ver o preço de cada item e o preço total
   - [x] Remover itens do carrinho
   - [x] Finalizar o pedido
 
-  #### Na URL `customer/orders/` o cliente pode:
-
+  ### Na URL `customer/orders/` o cliente pode:
   - [x] Visualizar seus pedidos
 
   - [x] Ver o status de cada um deles
 
-  #### Na URL `customer/orders/:id` o cliente pode:
-
+  ### Na URL `customer/orders/:id` o cliente pode:
   - [x] Visualizar os detalhes de determinado pedido
 
   - [x] Ver seu status
-
-## Fluxo de Vendedor(a)
-
+</details>
