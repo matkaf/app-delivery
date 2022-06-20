@@ -13,7 +13,7 @@ A aplicação necessita do login de usuário para ser utilizada e esse login pod
   <summary>
 
   ## Fluxo Geral
-  </summary><br>
+  </summary>
 
   ### Tela de Cadastro:
   Uma pessoa pode se registrar como cliente no site enviando:
@@ -33,7 +33,7 @@ A aplicação necessita do login de usuário para ser utilizada e esse login pod
   <summary>
 
   ## Fluxo de cliente
-  </summary><br>
+  </summary>
 
   ### Na URL `customer/products` o cliente pode:
   - [x] Visualizar a lista de bebidas disponíveis
