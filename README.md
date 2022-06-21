@@ -1,4 +1,6 @@
-# Delivery App [em construção]
+<img src="./front-end/logo.png" placeholder="Logotipo" width="150px" style="border-radius: 50%"/>
+
+# Delivery App (... em andamento)
 
 ## Sobre o projeto
 
@@ -9,8 +11,6 @@ A aplicação necessita do login de usuário para ser utilizada e esse login pod
 ![Diagrama ER](./assets/readme/eer.png)
 
 ## :rocket: Como rodar o projeto?
-
-Por padrão, são utilizadas as portas: 3000(front) e 3001(back).
 
 1. Faça o clone do repositório para sua máquina:
 ```bash
@@ -27,7 +27,7 @@ npm install
 ```bash
 npm start
 ```
-#### Para utilizar a aplicação acesse: <http://localhost:3000>
+#### Lembre-se de verificar se o MySQL está rodando na sua máquina. Para garantir, basta utilizar o comando: `sudo systemctl start mysql`. A aplicação estará acessível em: <http://localhost:3000>
 
 ## ⚙️ Funcionalidades
 
