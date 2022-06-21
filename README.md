@@ -1,4 +1,6 @@
-<img src="./front-end/src/logo.png" placeholder="Logotipo" width="150px" style="border-radius: 50%"/>
+<p align="center">
+  <img src="./front-end/src/logo.png" placeholder="Logotipo" width="150px" style="border-radius:75px"/>
+</p>
 
 # Delivery App (... em andamento)
 
