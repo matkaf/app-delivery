@@ -8,7 +8,7 @@ A aplicação necessita do login de usuário para ser utilizada e esse login pod
 
 ![Diagrama ER](./assets/readme/eer.png)
 
-## Como rodar o projeto?
+## :rocket: Como rodar o projeto?
 
 Por padrão, são utilizadas as portas: 3000(front) e 3001(back).
 
@@ -28,6 +28,8 @@ npm install
 npm start
 ```
 #### Para utilizar a aplicação acesse: <http://localhost:3000>
+
+## ⚙️ Funcionalidades
 
 <details>
 
@@ -77,3 +79,7 @@ npm start
 
   - [x] Ver seu status
 </details>
+
+# Desenvolvido por
+
+Esse projeto foi realizado durante o curso de Desenvolvimento Web da Trybe, com ajuda dos colegas @eliHC, @Ivanielson, @vitorSilva95 e @gabiru1 :rocket: 
