@@ -40,7 +40,7 @@ npm start
 
 <summary>
   
-:alert: **Clique aqui para revelar login e senha de teste**
+#### :warning: Clique aqui para revelar o login e senha de teste :warning:
 </summary>
 
   ```
