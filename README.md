@@ -80,6 +80,6 @@ npm start
   - [x] Ver seu status
 </details>
 
-# Desenvolvido por
+## Desenvolvido por
 
 Esse projeto foi realizado durante o curso de Desenvolvimento Web da Trybe, com ajuda dos colegas [@eliHC](https://github.com/eliHC), [@Ivanielson](https://github.com/Ivanielson), [@vitorSilva95](https://github.com/vitorSilva95) e [@gabiru1](https://github.com/gabiru1) :rocket: 
