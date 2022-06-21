@@ -2,11 +2,16 @@
   <img src="./front-end/src/logo.png" placeholder="Logotipo" width="150px" style="border-radius:75px"/>
 </p>
 
+<p align="center">
+  <a href="#sobre-o-projeto">Sobre</a> | 
+  <a href="#rocket-como-rodar-o-projeto">Como rodar o projeto</a> | 
+  <a href="#%EF%B8%8F-funcionalidades">Funcionalidades</a> | 
+  <a href="#desenvolvido-por">Desenvolvido por</a>
+</p>
+
 # Delivery App (... em andamento)
 
-## Sobre o projeto
-
-O Delivery App é um sistema completo de delivery de bebidas. Ele contém o banco de dados em **MySQL**, back-end em **Node.js, Express e Sequelize** e o front-end em **React e Styled-components**.
+O Delivery App é um sistema completo de delivery de bebidas desenvolvido em Javascript. Ele contém o banco de dados em **MySQL**, back-end com **Node.js, Express e Sequelize** e o front-end com **React e Styled-components**.
 
 A aplicação necessita do login de usuário para ser utilizada e esse login pode ser feito como **cliente**, **vendedor** ou **administrador**. Segue o diagrama do banco de dados:
 
@@ -30,6 +35,25 @@ npm install
 npm start
 ```
 #### Lembre-se de verificar se o MySQL está rodando na sua máquina. Para garantir, basta utilizar o comando: `sudo systemctl start mysql`. A aplicação estará acessível em: <http://localhost:3000>
+
+<details>
+
+<summary>
+  
+:alert: **Clique aqui para revelar login e senha de teste**
+</summary>
+
+  ```
+  Cliente:
+    Login: teste@teste.com
+    Senha: teste123
+  - ou crie seu próprio usuário
+
+  Vendedora:
+    Login: fulana@deliveryapp.com
+    Senha: fulana@123
+  ```
+</details>
 
 ## ⚙️ Funcionalidades
 
