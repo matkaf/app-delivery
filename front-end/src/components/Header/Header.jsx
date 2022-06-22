@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { StyledHeader, Div, Nav, UsernameA,
-  LogoutA, OrdersA, ProductsA } from './styledHeader';
+  LogoutA, OrdersA, A } from './styledHeader';
 
 export default function Header() {
   const navigate = useNavigate();
@@ -24,9 +24,9 @@ export default function Header() {
       <Nav>
         { userRole === 'customer'
           && (
-            <ProductsA onClick={ () => navigate('/customer/products') }>
+            <A onClick={ () => navigate('/customer/products') }>
               Produtos
-            </ProductsA>
+            </A>
           )}
         <OrdersA
           role={ userRole }

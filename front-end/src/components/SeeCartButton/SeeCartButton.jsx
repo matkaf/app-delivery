@@ -16,12 +16,9 @@ export default function SeeCartButton() {
     <CartButton
       disabled={ +totalPrice === 0 }
       onClick={ seeCart }
-      data-testid="customer_products__button-cart"
     >
       Ver Carrinho: R$
-      <span
-        data-testid="customer_products__checkout-bottom-value"
-      >
+      <span>
         {totalPrice > 0 ? totalPrice.replace('.', ',') : '0,00'}
       </span>
     </CartButton>

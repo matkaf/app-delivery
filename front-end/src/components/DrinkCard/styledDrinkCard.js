@@ -7,7 +7,7 @@ const CardContainer = styled.div`
   justify-content: space-evenly;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  box-shadow: #cecece 0.1rem 0.1rem 0.5rem;
+  box-shadow: #cecece 0.2rem 0.2rem 0.5rem;
   width: 9rem;
   height: 16rem;
   text-align: center;
