@@ -19,6 +19,10 @@ const Button = styled.button`
   color: white;
   cursor: pointer;
 
+  &:hover {
+    background-color: #045B52;
+  }
+
   :nth-child(1){
     border-top-left-radius: 20%;
     border-bottom-left-radius: 20%;
@@ -32,6 +36,7 @@ const Button = styled.button`
 const Input = styled.input`
   width: 20%;
   height: 70%;
+  color: #242424;
   text-align: center;
   border: solid grey 0.1rem;
   border-left: none;
