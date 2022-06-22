@@ -22,7 +22,7 @@ export default function SeeCartButton() {
       <span
         data-testid="customer_products__checkout-bottom-value"
       >
-        {totalPrice > 0 ? totalPrice.replace('.', ',') : '0'}
+        {totalPrice > 0 ? totalPrice.replace('.', ',') : '0,00'}
       </span>
     </CartButton>
   );
