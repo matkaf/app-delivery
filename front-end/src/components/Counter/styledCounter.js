@@ -3,20 +3,20 @@ import styled from 'styled-components';
 const StyledCounter = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   height: 20%;
 `;
 
 const Button = styled.button`
-  width: 30%;
-  height: 80%;
+  width: 25%;
+  height: 70%;
   background-color: #036B52;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
-  font-weight: 900;
+  font-size: 1rem;
+  font-weight: 700;
   color: white;
-  border: none;
   cursor: pointer;
 
   :nth-child(1){
@@ -31,7 +31,7 @@ const Button = styled.button`
 
 const Input = styled.input`
   width: 20%;
-  height: 80%;
+  height: 70%;
   text-align: center;
   border: solid grey 0.1rem;
   border-left: none;

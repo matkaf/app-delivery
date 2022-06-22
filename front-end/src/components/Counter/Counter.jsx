@@ -2,13 +2,12 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, StyledCounter, Input } from './styledCounter';
 
-export default function Counter({ value, onClick, onChange, id }) {
+export default function Counter({ value, onClick, onChange }) {
   return (
     <StyledCounter>
       <Button
         type="button"
         onClick={ onClick }
-        data-testid={ `customer_products__button-card-rm-item-${id}` }
       >
         -
       </Button>
@@ -17,12 +16,10 @@ export default function Counter({ value, onClick, onChange, id }) {
         inputMode="numeric"
         value={ value }
         onChange={ onChange }
-        data-testid={ `customer_products__input-card-quantity-${id}` }
       />
       <Button
         type="button"
         onClick={ onClick }
-        data-testid={ `customer_products__button-card-add-item-${id}` }
       >
         +
       </Button>
