@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button, Div, Input } from './styledCounter';
+import { Button, StyledCounter, Input } from './styledCounter';
 
 export default function Counter({ value, onClick, onChange, id }) {
   return (
-    <Div>
+    <StyledCounter>
       <Button
         type="button"
         onClick={ onClick }
@@ -26,7 +26,7 @@ export default function Counter({ value, onClick, onChange, id }) {
       >
         +
       </Button>
-    </Div>
+    </StyledCounter>
   );
 }
 

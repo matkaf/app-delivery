@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useShoppingCart } from '../../hooks/useTotalPrice';
 import Counter from '../Counter/Counter';
-import { CardContainer, FooterCard, Img, PriceContainer } from './styledDrinkCard';
+import { CardContainer, Img, NameContainer, PriceContainer } from './styledDrinkCard';
 
 export default function DrinkCard({ id, price, imageUrl, drinkName }) {
   const [amount, setAmount] = useState(0);
@@ -35,26 +35,19 @@ export default function DrinkCard({ id, price, imageUrl, drinkName }) {
   }
 
   return (
-    <CardContainer data-testid={ `customer_products__element-card-price-${id}` }>
-      <PriceContainer>{price.replace('.', ',')}</PriceContainer>
+    <CardContainer>
+      <NameContainer>{ drinkName }</NameContainer>
       <Img
         src={ imageUrl }
         alt={ drinkName }
-        data-testid={ `customer_products__img-card-bg-image-${id}` }
       />
-      <FooterCard>
-        <h4
-          data-testid={ `customer_products__element-card-title-${id}` }
-        >
-          { drinkName }
-        </h4>
-        <Counter
-          value={ amount }
-          onClick={ (event) => handleClick(event) }
-          onChange={ (event) => handleChange(event) }
-          id={ id }
-        />
-      </FooterCard>
+      <PriceContainer>{`R$${price.replace('.', ',')}`}</PriceContainer>
+      <Counter
+        value={ amount }
+        onClick={ (event) => handleClick(event) }
+        onChange={ (event) => handleChange(event) }
+        id={ id }
+      />
     </CardContainer>
   );
 }

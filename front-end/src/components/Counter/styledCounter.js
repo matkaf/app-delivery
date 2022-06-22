@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
-const Div = styled.div`
+const StyledCounter = styled.div`
   display: flex;
   justify-content: center;
+  height: 20%;
 `;
 
 const Button = styled.button`
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 30%;
+  height: 80%;
   background-color: #036B52;
   display: flex;
   justify-content: center;
@@ -29,11 +30,12 @@ const Button = styled.button`
 `;
 
 const Input = styled.input`
-  width: 15%;
+  width: 20%;
+  height: 80%;
   text-align: center;
-  border: solid black 1px;
+  border: solid grey 0.1rem;
   border-left: none;
   border-right: none;
 `;
 
-export { Button, Input, Div };
+export { Button, Input, StyledCounter };

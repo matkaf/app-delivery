@@ -1,42 +1,39 @@
 import styled from 'styled-components';
 
 const CardContainer = styled.div`
-  margin-top: 1.5rem;
-  position: relative;
   display: flex;
-  text-align: center;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  border: solid grey 1px;
-  width: 22rem;
-  height: 29rem;
+  justify-content: space-evenly;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  box-shadow: grey 0.1rem 0.2rem 1rem;
+  width: 9rem;
+  height: 16rem;
+  text-align: center;
 `;
 
 const Img = styled.img`
   width: auto;
-  height: 20rem;
+  max-width: 80%;
+  height: 40%;
 `;
 
-const PriceContainer = styled.div`
-  background-color: #F2FFFC;
-  left: 1rem;
-  top: 0.5rem;
-  border-radius: 5px;
-  font-size: 2rem;
-  position: absolute;
-  font-weight: bold;
-  opacity: 0.8;
-`;
-
-const FooterCard = styled.div`
+const NameContainer = styled.p`
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  background-color: #E5E5E5;
+  align-items: center;
+  justify-content: center;
+  height: 20%;
+  overflow: hidden;
+  color: #242424;
+  font-weight: 700;
+  height: 20%;
   width: 100%;
-  height: 6rem;
-  box-shadow: 1px rgb(192,192,192)
 `;
 
-export { Img, PriceContainer, CardContainer, FooterCard };
+const PriceContainer = styled(NameContainer)`
+  color: #036b52;
+  font-size: 1.5rem;
+`;
+
+export { Img, PriceContainer, NameContainer, CardContainer };
