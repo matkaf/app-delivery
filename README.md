@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./front-end/src/logo.png" placeholder="Logotipo" width="150px" style="border-radius:75px"/>
+  <img src="./front-end/src/logo.png" alt="Logotipo" width="150px" style="border-radius:75px"/>
 </p>
 
 <p align="center">
@@ -16,10 +16,7 @@ O Delivery App é um sistema completo de delivery de bebidas desenvolvido em Jav
 A aplicação necessita do login de usuário para ser utilizada e esse login pode ser feito como **cliente**, **vendedor** ou **administrador**.
 
 <p align="center">
-
-  ![GIF da aplicação funcionando](assets/readme/delivery-app.gif)
-
-  GIF da aplicação funcionando :simple_smile:
+  <img src="assets/readme/delivery-app.gif" alt="GIF da aplicação funcionando" />
 </p>
 
 
