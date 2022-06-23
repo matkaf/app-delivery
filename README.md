@@ -17,7 +17,7 @@ A aplicação necessita do login de usuário para ser utilizada e esse login pod
 
 <p align="center">
 
-  ![GIF da aplicação funcionando]("./assets/readme/delivery-app.gif")
+  ![GIF da aplicação funcionando](assets/readme/delivery-app.gif)
 
   GIF da aplicação funcionando :simple_smile:
 </p>
