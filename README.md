@@ -13,7 +13,18 @@
 
 O Delivery App é um sistema completo de delivery de bebidas desenvolvido em Javascript. Ele contém o banco de dados em **MySQL**, back-end com **Node.js, Express e Sequelize** e o front-end com **React e Styled-components**.
 
-A aplicação necessita do login de usuário para ser utilizada e esse login pode ser feito como **cliente**, **vendedor** ou **administrador**. Segue o diagrama do banco de dados:
+A aplicação necessita do login de usuário para ser utilizada e esse login pode ser feito como **cliente**, **vendedor** ou **administrador**.
+
+<p align="center">
+
+  ![GIF da aplicação funcionando]("./assets/readme/delivery-app.gif")
+
+  GIF da aplicação funcionando :simple_smile:
+</p>
+
+
+
+Abaixo o diagrama de construção do banco de dados:
 
 ![Diagrama ER](./assets/readme/eer.png)
 
